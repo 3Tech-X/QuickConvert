@@ -1,22 +1,27 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.serialization)
+    id("dagger.hilt.android.plugin")
+    id("kotlin-kapt")
+
 }
 
 android {
     namespace = "com.three.tech.quickconvert"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.three.tech.quickconvert"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        signingConfig = signingConfigs.getByName("debug")
     }
 
     buildTypes {
@@ -26,6 +31,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            signingConfig = signingConfigs.getByName("debug")
         }
     }
     compileOptions {
@@ -48,6 +54,14 @@ dependencies {
     implementation(libs.bundles.ktor)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.ui)
+
+    // Hilt Dependencies
+    implementation (libs.hilt.android)
+    kapt(libs.hilt.android.compiler)
+    implementation(libs.androidx.work.runtime.ktx)
+    kapt (libs.androidx.hilt.compiler)
+    implementation(libs.androidx.hilt.work)
+
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)

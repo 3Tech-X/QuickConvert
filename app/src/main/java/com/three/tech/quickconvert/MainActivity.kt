@@ -26,32 +26,34 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.three.tech.quickconvert.networking.CurrencyConverterClient
-import com.three.tech.quickconvert.networking.createHttpClient
 import com.three.tech.quickconvert.networking.dataclass.Currency
 import com.three.tech.quickconvert.networking.dataclass.NetworkError
 import com.three.tech.quickconvert.networking.util.NetworkResult
 import com.three.tech.quickconvert.ui.theme.QuickConvertTheme
-import io.ktor.client.engine.okhttp.OkHttp
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    @Inject
+    lateinit var service: ConverterService
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val currencyConverter = CurrencyConverterClient(createHttpClient(OkHttp.create()))
         enableEdgeToEdge()
         setContent {
             QuickConvertTheme {
                 val scope = rememberCoroutineScope()
                 var amount by remember {
-                    mutableStateOf("")
+                    mutableStateOf("100")
                 }
                 var baseCurrency by remember {
-                    mutableStateOf("")
+                    mutableStateOf("USD")
                 }
 
                 var targetCurrency by remember {
-                    mutableStateOf("")
+                    mutableStateOf("INR")
                 }
 
                 var currency by remember {
@@ -109,7 +111,7 @@ class MainActivity : ComponentActivity() {
                             onClick = {
                                 scope.launch {
                                     isLoading = true
-                                        val response = currencyConverter.convertCurrency(
+                                        val response = service.getCurrencyValue(
                                             baseCurrency,
                                             targetCurrency,
                                             amount.toInt()
