@@ -1,5 +1,6 @@
-package com.three.tech.quickconvert
+package com.three.tech.quickconvert.di
 
+import com.three.tech.quickconvert.ConverterService
 import com.three.tech.quickconvert.networking.ConverterServiceImpl
 import com.three.tech.quickconvert.networking.CurrencyConverterClient
 import com.three.tech.quickconvert.networking.createHttpClient
