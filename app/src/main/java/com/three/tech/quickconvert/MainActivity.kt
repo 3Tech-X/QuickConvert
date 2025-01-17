@@ -36,6 +36,7 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
     @Inject
     lateinit var service: ConverterService
 
@@ -111,20 +112,20 @@ class MainActivity : ComponentActivity() {
                             onClick = {
                                 scope.launch {
                                     isLoading = true
-                                        val response = service.getCurrencyValue(
-                                            baseCurrency,
-                                            targetCurrency,
-                                            amount.toInt()
-                                        )
-                                        when (response) {
-                                            is NetworkResult.Success -> {
-                                                currency = response.data
-                                            }
-
-                                            is NetworkResult.Error -> {
-                                                errorMessage = response.error
-                                            }
+                                    val response = service.getCurrencyValue(
+                                        baseCurrency,
+                                        targetCurrency,
+                                        amount.toInt()
+                                    )
+                                    when (response) {
+                                        is NetworkResult.Success -> {
+                                            currency = response.data
                                         }
+
+                                        is NetworkResult.Error -> {
+                                            errorMessage = response.error
+                                        }
+                                    }
                                     isLoading = false
                                 }
                             },
