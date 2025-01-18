@@ -115,7 +115,7 @@ class MainActivity : ComponentActivity() {
                                     val response = service.getCurrencyValue(
                                         baseCurrency,
                                         targetCurrency,
-                                        amount.toInt()
+                                        amount.toFloat()
                                     )
                                     when (response) {
                                         is NetworkResult.Success -> {
