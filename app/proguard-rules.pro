@@ -12,6 +12,10 @@
 #   public *;
 #}
 
+-dontwarn org.slf4j.impl.StaticLoggerBinder
+###---------------End: proguard configuration for Pusher Java Client  ----------
+#
+
 # Uncomment this to preserve the line number information for
 # debugging stack traces.
 #-keepattributes SourceFile,LineNumberTable
@@ -19,3 +23,10 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+-assumenosideeffects class android.util.Log {
+    public static *** w(...);
+    public static *** wtf(...);
+    public static *** d(...);
+    public static *** v(...);
+}
