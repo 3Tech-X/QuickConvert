@@ -15,7 +15,7 @@ class CurrencyConverterClient(
     suspend fun convertCurrency(
         baseCurrency: String,
         targetCurrency: String,
-        amount: Int
+        amount: Float
     ): NetworkResult {
         val response = try {
             httpClient.get(

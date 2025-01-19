@@ -8,7 +8,7 @@ class ConverterServiceImpl @Inject constructor (
     private val currencyConverter: CurrencyConverterClient
 ): ConverterService {
 
-    override suspend fun getCurrencyValue(baseCurrency: String, targetCurrency: String, amount: Int): NetworkResult {
+    override suspend fun getCurrencyValue(baseCurrency: String, targetCurrency: String, amount: Float): NetworkResult {
         return currencyConverter.convertCurrency(baseCurrency, targetCurrency, amount)
     }
 
