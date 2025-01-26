@@ -1,6 +1,5 @@
 package com.three.tech.quickconvert.networking
 
-import com.three.tech.quickconvert.BuildConfig
 import com.three.tech.quickconvert.networking.dataclass.Currency
 import com.three.tech.quickconvert.networking.dataclass.NetworkError
 import com.three.tech.quickconvert.networking.util.NetworkResult
@@ -20,7 +19,7 @@ class CurrencyConverterClient(
     ): NetworkResult {
         val response = try {
             httpClient.get(
-                urlString = "https://v6.exchangerate-api.com/v6/${BuildConfig.API_KEY}/pair/${baseCurrency}/${targetCurrency}/${amount}"
+                urlString = "https://v6.exchangerate-api.com/v6/026f9f8e2e8e2e310cd6f6d0/pair/${baseCurrency}/${targetCurrency}/${amount}"
             )
         } catch (e: UnresolvedAddressException) {
             return NetworkResult.Error(NetworkError.NO_INTERNET)
