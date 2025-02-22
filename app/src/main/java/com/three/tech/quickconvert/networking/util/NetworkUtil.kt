@@ -1,6 +1,5 @@
-package com.three.tech.quickconvert
+package com.three.tech.quickconvert.networking.util
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
@@ -20,6 +19,4 @@ object NetworkUtil {
             else -> false
         }
     }
-
-
 }

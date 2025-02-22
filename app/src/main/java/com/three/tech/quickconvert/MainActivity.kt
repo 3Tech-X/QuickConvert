@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.dp
 import com.three.tech.quickconvert.networking.dataclass.Currency
 import com.three.tech.quickconvert.networking.dataclass.NetworkError
 import com.three.tech.quickconvert.networking.util.NetworkResult
+import com.three.tech.quickconvert.networking.util.NetworkUtil
 import com.three.tech.quickconvert.ui.theme.QuickConvertTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
