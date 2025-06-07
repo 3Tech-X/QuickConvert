@@ -52,6 +52,9 @@ dependencies {
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.ui)
 
+    //Splash Screen Dependencies
+    implementation(libs.splashscreen)
+
     // Hilt Dependencies
     implementation (libs.hilt.android)
     kapt(libs.hilt.android.compiler)
