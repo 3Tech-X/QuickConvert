@@ -38,16 +38,16 @@ android {
     }
     buildTypes {
         getByName("release") {
-                isMinifyEnabled = true
-                proguardFiles(
-                    getDefaultProguardFile("proguard-android-optimize.txt"),
-                    "proguard-rules.pro"
-                )
+            isMinifyEnabled = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
             enableAndroidTestCoverage = false // just in case
             enableUnitTestCoverage = false
 
             signingConfig = signingConfigs.getByName("release")
-            }
+        }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -74,14 +74,14 @@ dependencies {
     implementation(libs.splashscreen)
 
     // Hilt Dependencies
-    implementation (libs.hilt.android)
+    implementation(libs.hilt.android)
     implementation(libs.hilt.navigation.compose)
     implementation(libs.androidx.navigation)
     implementation(libs.androidx.navigation.ktx)
     kapt(libs.androidx.navigation.safe.args)
     kapt(libs.hilt.android.compiler)
     implementation(libs.androidx.work.runtime.ktx)
-    kapt (libs.androidx.hilt.compiler)
+    kapt(libs.androidx.hilt.compiler)
     implementation(libs.androidx.hilt.work)
 
     implementation(libs.androidx.ui.graphics)
