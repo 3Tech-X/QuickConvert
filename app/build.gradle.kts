@@ -43,9 +43,6 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            enableAndroidTestCoverage = false // just in case
-            enableUnitTestCoverage = false
-
             signingConfig = signingConfigs.getByName("release")
         }
     }
