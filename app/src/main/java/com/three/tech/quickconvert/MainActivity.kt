@@ -5,7 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import com.three.tech.quickconvert.screens.QCHomePage
+import com.three.tech.quickconvert.navigation.QCNavigation
 import com.three.tech.quickconvert.ui.theme.QuickConvertTheme
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -24,7 +24,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             QuickConvertTheme {
-                QCHomePage(service)
+                QCNavigation(service, this)
             }
         }
     }
