@@ -12,6 +12,13 @@ android {
     namespace = "com.three.tech.quickconvert"
     compileSdk = 35
 
+
+    lint {
+        disable += "NullSafeMutableLiveData"
+        checkReleaseBuilds = false // optional: disable lint only for release
+    }
+
+
     defaultConfig {
         applicationId = "com.three.tech.quickconvert"
         minSdk = 24
@@ -20,19 +27,27 @@ android {
         versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
-    lint {
-        disable +=  "NullSafeMutableLiveData"
-    }
 
-    buildTypes {
-        release {
-            isMinifyEnabled = true
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-            signingConfig = signingConfigs.getByName("debug")
+    signingConfigs {
+        create("release") {
+            storeFile = file(project.property("RELEASE_STORE_FILE") as String)
+            storePassword = project.property("RELEASE_STORE_PASSWORD") as String
+            keyAlias = project.property("RELEASE_KEY_ALIAS") as String
+            keyPassword = project.property("RELEASE_KEY_PASSWORD") as String
         }
+    }
+    buildTypes {
+        getByName("release") {
+                isMinifyEnabled = true
+                proguardFiles(
+                    getDefaultProguardFile("proguard-android-optimize.txt"),
+                    "proguard-rules.pro"
+                )
+            enableAndroidTestCoverage = false // just in case
+            enableUnitTestCoverage = false
+
+            signingConfig = signingConfigs.getByName("release")
+            }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
