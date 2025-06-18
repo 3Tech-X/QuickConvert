@@ -7,23 +7,20 @@
 - 🔁 **Currency Converter**  
   Convert between major world currencies with up-to-date exchange rates.
 
-- ⚖️ **Unit Conversion**  
-  Instantly convert between units of measurement (length, weight, volume, etc.).
-
 - ❤️ **BMI Calculator**  
   Easily calculate your Body Mass Index using metric or imperial units.
 
-- 🌐 **Multi-Language Support** *(optional, if applicable)*  
-  Experience the app in your preferred language.
+- 🌐 **Multi-Language Support**  
+  Use the app in your preferred language.  
+  **Currently supported languages:** English, हिंदी (Hindi), ಕನ್ನಡ (Kannada)
 
 - 🎯 **Clean and Modern UI**  
   Designed with user experience in mind — intuitive layout and fast interactions.
 
 ## 📱 Screenshots
 
-> *(Add actual screenshots here if available)*  
-![Quick Convert Screenshot 1](link-to-screenshot-1)  
-![Quick Convert Screenshot 2](link-to-screenshot-2)
+> *(Screen Shot will be updated soon)*  
+
 
 ## 📦 Tech Stack
 
@@ -31,10 +28,10 @@
 - **Jetpack Compose**
 - **MVVM Architecture**
 - **Coroutines & Flow**
-- **Retrofit (for API calls, if used)**
+- **Ktor (for API calls)**
 
 ## 🛠 Setup Instructions
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/quick-convert.git
+   git clone https://github.com/3Tech-X/QuickConvert
