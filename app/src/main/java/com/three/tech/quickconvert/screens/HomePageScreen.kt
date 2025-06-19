@@ -1,5 +1,6 @@
 package com.three.tech.quickconvert.screens
 
+import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -42,6 +43,8 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.three.tech.quickconvert.ConverterService
 import com.three.tech.quickconvert.R
+import com.three.tech.quickconvert.navbar.FloatingBottomBar
+import com.three.tech.quickconvert.navigation.BottomBarItem
 import com.three.tech.quickconvert.networking.dataclass.Currency
 import com.three.tech.quickconvert.networking.dataclass.NetworkError
 import com.three.tech.quickconvert.networking.util.NetworkResult
@@ -62,48 +65,89 @@ fun QCHomePage(service: ConverterService, onClose: () -> Unit) {
     var errorMessage by remember { mutableStateOf<NetworkError?>(null) }
     var noInternetMessage by remember { mutableStateOf<String?>(null) }
     val scrollState = rememberScrollState()
-    Scaffold(modifier = Modifier
-        .fillMaxSize()
-        .background(Color.White), topBar = {
-        androidx.compose.material3.CenterAlignedTopAppBar(
-            modifier = Modifier.background(Color.White),
-            title = {
-                Text(
-                    text = context.getString(R.string.qc_title),
-                    style = MaterialTheme.typography.titleLarge
-                )
-            },
-            navigationIcon = {
-                Box(
-                    modifier = Modifier
-                        .padding(8.dp)
-                        .clickable {
-                            onClose()
-                        }
-                        .size(24.dp),
-                    contentAlignment = Alignment.Center,
-                ) {
-                    Image(
-                        painter = painterResource(id = R.drawable.back_arrow),
-                        contentDescription = "Quick Convert Logo",
-                        modifier = Modifier.fillMaxSize(),
-                        contentScale = ContentScale.Fit,
-                        colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onBackground)
+    Scaffold(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background), topBar = {
+            androidx.compose.material3.CenterAlignedTopAppBar(
+                modifier = Modifier.background(MaterialTheme.colorScheme.background),
+                title = {
+                    Text(
+                        text = context.getString(R.string.qc_title),
+                        style = MaterialTheme.typography.titleLarge
                     )
+                },
+                navigationIcon = {
+                    Box(
+                        modifier = Modifier
+                            .padding(8.dp)
+                            .clickable {
+                                onClose()
+                            }
+                            .size(24.dp),
+                        contentAlignment = Alignment.Center,
+                    ) {
+                        Image(
+                            painter = painterResource(id = R.drawable.back_arrow),
+                            contentDescription = "Quick Convert Logo",
+                            modifier = Modifier.fillMaxSize(),
+                            contentScale = ContentScale.Fit,
+                            colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onBackground)
+                        )
+                    }
                 }
-            }
-        )
-    }) { innerPadding ->
+            )
+        },
+        bottomBar = {
+            FloatingBottomBar(
+                items = listOf(
+                    BottomBarItem(
+                        label = "Convert",
+                        icon = R.drawable.convert_bottom_icon,
+                        onClick = {
+                            Toast.makeText(
+                                context,
+                                "Convert Clicked",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    ),
+                    BottomBarItem(
+                        label = "BMI",
+                        icon = R.drawable.bottom_bmi_icon,
+                        onClick = {
+                            Toast.makeText(
+                                context,
+                                "BMI Clicked",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    ),
+                    BottomBarItem(
+                        label = "About",
+                        icon = R.drawable.info_bottom_icon,
+                        onClick = {
+                            Toast.makeText(
+                                context,
+                                "About Clicked",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    )
+                )
+            )
+        }
+    ) { innerPadding ->
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .background(color = Color.White)
+                .background(color = MaterialTheme.colorScheme.background)
         ) {
             Column(
                 modifier = Modifier
                     .verticalScroll(scrollState)
                     .fillMaxSize()
-                    .background(color = Color.White)
+                    .background(color = MaterialTheme.colorScheme.background)
                     .padding(innerPadding),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.spacedBy(16.dp, Alignment.CenterVertically)
@@ -111,15 +155,17 @@ fun QCHomePage(service: ConverterService, onClose: () -> Unit) {
                 Card(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .background(Color.White)
+                        .background(MaterialTheme.colorScheme.background)
                         .padding(16.dp),
                     shape = RoundedCornerShape(16.dp),
                     elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
                     border = BorderStroke(1.dp, Color.LightGray)
                 ) {
-                    Column(modifier = Modifier
-                        .fillMaxWidth()
-                        .background(Color.White)) {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .background(Color.White)
+                    ) {
                         Image(
                             modifier = Modifier
                                 .fillMaxWidth(),
