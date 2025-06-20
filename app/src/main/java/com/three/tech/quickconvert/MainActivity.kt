@@ -8,13 +8,9 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.three.tech.quickconvert.navigation.QCNavigation
 import com.three.tech.quickconvert.ui.theme.QuickConvertTheme
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-
-    @Inject
-    lateinit var service: ConverterService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +20,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             QuickConvertTheme {
-                QCNavigation(service, this)
+                QCNavigation(this)
             }
         }
     }

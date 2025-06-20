@@ -20,17 +20,16 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -41,30 +40,33 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
-import com.three.tech.quickconvert.ConverterService
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.three.tech.quickconvert.R
 import com.three.tech.quickconvert.navbar.FloatingBottomBar
 import com.three.tech.quickconvert.navigation.BottomBarItem
 import com.three.tech.quickconvert.networking.dataclass.Currency
 import com.three.tech.quickconvert.networking.dataclass.NetworkError
-import com.three.tech.quickconvert.networking.util.NetworkResult
 import com.three.tech.quickconvert.networking.util.NetworkUtil
-import kotlinx.coroutines.launch
+import com.three.tech.quickconvert.viewmodel.ConvertViewModel
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun QCHomePage(service: ConverterService, onClose: () -> Unit) {
+fun QCHomePage(onClose: () -> Unit) {
     val context = LocalContext.current
-    val scope = rememberCoroutineScope()
+    val currencyViewModel = hiltViewModel<ConvertViewModel>()
     var amount by remember { mutableStateOf("100") }
     var baseCurrency by remember { mutableStateOf("USD") }
     var targetCurrency by remember { mutableStateOf("INR") }
-    var currency by remember { mutableStateOf<Currency?>(null) }
+    val currency by remember { mutableStateOf<Currency?>(null) }
     var isLoading by remember { mutableStateOf(false) }
-    var errorMessage by remember { mutableStateOf<NetworkError?>(null) }
+    val errorMessage by remember { mutableStateOf<NetworkError?>(null) }
     var noInternetMessage by remember { mutableStateOf<String?>(null) }
+    val networkResult = currencyViewModel.networkResult.collectAsState()
     val scrollState = rememberScrollState()
+    val response = qCResponse(networkResult, currency, noInternetMessage, errorMessage) {
+        isLoading = it
+    }
     Scaffold(
         modifier = Modifier
             .fillMaxSize()
@@ -189,9 +191,6 @@ fun QCHomePage(service: ConverterService, onClose: () -> Unit) {
                     }
 
                 }
-
-
-
                 TextField(
                     value = baseCurrency,
                     onValueChange = { baseCurrency = it },
@@ -219,32 +218,18 @@ fun QCHomePage(service: ConverterService, onClose: () -> Unit) {
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                     placeholder = { Text("Amount") }
                 )
-
                 Button(
                     modifier = Modifier
                         .padding(horizontal = 16.dp)
                         .fillMaxWidth(),
                     onClick = {
                         if (NetworkUtil.checkForInternet(context)) {
-                            scope.launch {
-                                isLoading = true
-                                val response = service.getCurrencyValue(
-                                    baseCurrency,
-                                    targetCurrency,
-                                    amount.toFloat()
-                                )
-                                when (response) {
-                                    is NetworkResult.Success -> {
-                                        currency = response.data
-                                        noInternetMessage = null
-                                    }
-
-                                    is NetworkResult.Error -> {
-                                        errorMessage = response.error
-                                    }
-                                }
-                                isLoading = false
-                            }
+                            currencyViewModel.getCalculatedCurrencyValue(
+                                baseCurrency = baseCurrency,
+                                targetCurrency = targetCurrency,
+                                amount = amount
+                            )
+                            isLoading = true
                         } else {
                             noInternetMessage = "No Internet Connection is available."
                         }
@@ -253,53 +238,11 @@ fun QCHomePage(service: ConverterService, onClose: () -> Unit) {
                     colors = ButtonDefaults.buttonColors(
                         contentColor = Color.Black
                     )
-                ) {
-                    HandleLoaderOnClick(isLoading)
-                }
+                ) { HandleLoaderOnClick(isLoading) }
 
-                noInternetMessage?.let {
-                    Text(
-                        text = it,
-                        color = Color.Red
-                    )
-                }
+                ResultText(response)
 
-                errorMessage?.let {
-                    Text(
-                        text = it.toString(),
-                        color = Color.Red
-                    )
-                }
-
-                currency?.let {
-                    Text(
-                        text = currency?.conversionRate.toString(),
-                    )
-                    Text(
-                        text = currency?.conversionResult.toString(),
-                    )
-                    Text(
-                        text = currency?.baseCode.toString(),
-                    )
-                    Text(
-                        text = currency?.targetCode.toString(),
-                    )
-                }
             }
         }
-    }
-}
-
-@Composable
-private fun HandleLoaderOnClick(isLoading: Boolean) {
-    if (isLoading) {
-        CircularProgressIndicator(
-            modifier = Modifier
-                .size(15.dp),
-            strokeWidth = 1.dp,
-            color = Color.Red
-        )
-    } else {
-        Text("Convert")
     }
 }

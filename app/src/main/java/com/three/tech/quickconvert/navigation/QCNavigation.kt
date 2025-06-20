@@ -9,12 +9,11 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
-import com.three.tech.quickconvert.ConverterService
 
 const val HOME_SCREEN = "home_page"
 
 @Composable
-fun QCNavigation(service: ConverterService, context: Activity) {
+fun QCNavigation(context: Activity) {
     val navController = rememberNavController()
 
     NavHost(
@@ -23,16 +22,15 @@ fun QCNavigation(service: ConverterService, context: Activity) {
         enterTransition = { EnterTransition.None },
         exitTransition = { ExitTransition.None },
     ) {
-        qcNavigation(navController, service, context)
+        qcNavigation(navController, context)
     }
 }
 
 fun NavGraphBuilder.qcNavigation(
     navController: NavController,
-    service: ConverterService,
     context: Activity
 ) {
     navigation(startDestination = QCComponentRoute.Home.route, route = HOME_SCREEN) {
-        navigationScreens(service, navController, context)
+        navigationScreens(navController, context)
     }
 }
