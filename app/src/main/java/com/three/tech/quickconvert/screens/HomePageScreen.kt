@@ -1,6 +1,5 @@
 package com.three.tech.quickconvert.screens
 
-import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -42,8 +41,6 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.three.tech.quickconvert.R
-import com.three.tech.quickconvert.navbar.FloatingBottomBar
-import com.three.tech.quickconvert.navigation.BottomBarItem
 import com.three.tech.quickconvert.networking.dataclass.Currency
 import com.three.tech.quickconvert.networking.dataclass.NetworkError
 import com.three.tech.quickconvert.networking.util.NetworkUtil
@@ -71,6 +68,7 @@ fun QCHomePage(onClose: () -> Unit) {
         modifier = Modifier
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background), topBar = {
+
             androidx.compose.material3.CenterAlignedTopAppBar(
                 modifier = Modifier.background(MaterialTheme.colorScheme.background),
                 title = {
@@ -100,45 +98,11 @@ fun QCHomePage(onClose: () -> Unit) {
                 }
             )
         },
+
         bottomBar = {
-            FloatingBottomBar(
-                items = listOf(
-                    BottomBarItem(
-                        label = "Convert",
-                        icon = R.drawable.convert_bottom_icon,
-                        onClick = {
-                            Toast.makeText(
-                                context,
-                                "Convert Clicked",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
-                    ),
-                    BottomBarItem(
-                        label = "BMI",
-                        icon = R.drawable.bottom_bmi_icon,
-                        onClick = {
-                            Toast.makeText(
-                                context,
-                                "BMI Clicked",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
-                    ),
-                    BottomBarItem(
-                        label = "About",
-                        icon = R.drawable.info_bottom_icon,
-                        onClick = {
-                            Toast.makeText(
-                                context,
-                                "About Clicked",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
-                    )
-                )
-            )
+            CustomNavigationBar(context)
         }
+
     ) { innerPadding ->
         Box(
             modifier = Modifier
