@@ -2,6 +2,7 @@ package com.three.tech.quickconvert.screens
 
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
@@ -49,6 +50,9 @@ fun HandleLoaderOnClick(isLoading: Boolean) {
             color = Color.Red
         )
     } else {
-        Text("Convert")
+        Text(
+            text = "Convert",
+            style = MaterialTheme.typography.titleMedium,
+        )
     }
 }

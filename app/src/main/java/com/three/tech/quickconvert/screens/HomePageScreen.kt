@@ -24,6 +24,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -52,9 +53,9 @@ import com.three.tech.quickconvert.viewmodel.ConvertViewModel
 fun QCHomePage(onClose: () -> Unit) {
     val context = LocalContext.current
     val currencyViewModel = hiltViewModel<ConvertViewModel>()
-    var amount by remember { mutableStateOf("100") }
-    var baseCurrency by remember { mutableStateOf("USD") }
-    var targetCurrency by remember { mutableStateOf("INR") }
+    var amount by remember { mutableStateOf("") }
+    var baseCurrency by remember { mutableStateOf("") }
+    var targetCurrency by remember { mutableStateOf("") }
     val currency by remember { mutableStateOf<Currency?>(null) }
     var isLoading by remember { mutableStateOf(false) }
     val errorMessage by remember { mutableStateOf<NetworkError?>(null) }
@@ -155,37 +156,67 @@ fun QCHomePage(onClose: () -> Unit) {
                     }
 
                 }
-                TextField(
-                    value = baseCurrency,
-                    onValueChange = { baseCurrency = it },
+                SearchableDropdown(
+                    items = listOf(
+                        "USD", "EUR", "GBP", "INR", "JPY", "AUD", "CAD", "CHF", "CNY", "SEK",
+                        "NZD", "MXN", "SGD", "HKD", "NOK", "KRW"
+                    ),
+                    label = "Base Currency",
+                    onItemSelected = { selectedItem ->
+                        baseCurrency = selectedItem
+                    },
                     modifier = Modifier
-                        .padding(horizontal = 16.dp)
+                        .padding(horizontal = 8.dp)
                         .fillMaxWidth(),
-                    placeholder = { Text("Base Currency") }
                 )
 
-                TextField(
-                    value = targetCurrency,
-                    onValueChange = { targetCurrency = it },
+                SearchableDropdown(
+                    items = listOf(
+                        "USD", "EUR", "GBP", "INR", "JPY", "AUD", "CAD", "CHF", "CNY", "SEK",
+                        "NZD", "MXN", "SGD", "HKD", "NOK", "KRW"
+                    ),
+                    label = "Convert to Currency",
+                    onItemSelected = { selectedItem ->
+                        targetCurrency = selectedItem
+                    },
                     modifier = Modifier
-                        .padding(horizontal = 16.dp)
+                        .padding(horizontal = 8.dp)
                         .fillMaxWidth(),
-                    placeholder = { Text("Target Currency") }
                 )
 
-                TextField(
-                    value = amount,
-                    onValueChange = { amount = it },
-                    modifier = Modifier
-                        .padding(horizontal = 16.dp)
-                        .fillMaxWidth(),
-                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                    placeholder = { Text("Amount") }
-                )
+                Column {
+                    TextField(
+                        value = amount,
+                        label = { Text("Amount to convert") },
+                        onValueChange = { amount = it },
+                        shape = RoundedCornerShape(12.dp),
+                        modifier = Modifier
+                            .padding(horizontal = 16.dp)
+                            .fillMaxWidth(),
+                        colors = TextFieldDefaults.colors(
+                            focusedIndicatorColor = Color.Transparent,
+                            unfocusedIndicatorColor = Color.Transparent,
+                            disabledIndicatorColor = Color.Transparent,
+                        ),
+                        isError = amount.isEmpty() || amount.toDoubleOrNull() == null,
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                    )
+
+                    if (amount.isEmpty() || amount.toDoubleOrNull() == null) {
+                        Text(
+                            text = "Please enter a valid amount",
+                            color = MaterialTheme.colorScheme.error,
+                            style = MaterialTheme.typography.bodySmall,
+                            modifier = Modifier.padding(start = 16.dp, top = 4.dp)
+                        )
+                    }
+                }
+
+
                 Button(
                     modifier = Modifier
-                        .padding(horizontal = 16.dp)
-                        .fillMaxWidth(),
+                        .padding(horizontal = 16.dp),
+                    shape = RoundedCornerShape(12.dp),
                     onClick = {
                         if (NetworkUtil.checkForInternet(context)) {
                             currencyViewModel.getCalculatedCurrencyValue(
@@ -198,7 +229,6 @@ fun QCHomePage(onClose: () -> Unit) {
                             noInternetMessage = "No Internet Connection is available."
                         }
                     },
-                    shape = RoundedCornerShape(100.dp),
                     colors = ButtonDefaults.buttonColors(
                         contentColor = Color.Black
                     )
