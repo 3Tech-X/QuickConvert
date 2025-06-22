@@ -1,4 +1,4 @@
-package com.three.tech.quickconvert.screens
+package com.three.tech.quickconvert.screens.homescreen
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth

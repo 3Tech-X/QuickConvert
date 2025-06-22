@@ -1,4 +1,4 @@
-package com.three.tech.quickconvert.screens
+package com.three.tech.quickconvert.screens.homescreen
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -37,6 +37,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.three.tech.quickconvert.R
 import com.three.tech.quickconvert.networking.dataclass.NetworkError
+import com.three.tech.quickconvert.screens.navigationbar.CustomNavigationBar
 import com.three.tech.quickconvert.viewmodel.ConvertViewModel
 
 

@@ -1,4 +1,4 @@
-package com.three.tech.quickconvert.screens
+package com.three.tech.quickconvert.screens.homescreen
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource

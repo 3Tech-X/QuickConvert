@@ -4,7 +4,7 @@ import android.app.Activity
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
-import com.three.tech.quickconvert.screens.QCHomePage
+import com.three.tech.quickconvert.screens.homescreen.QCHomePage
 
 internal fun NavGraphBuilder.navigationScreens(
     navController: NavController,

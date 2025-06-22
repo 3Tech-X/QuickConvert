@@ -1,4 +1,4 @@
-package com.three.tech.quickconvert.screens
+package com.three.tech.quickconvert.screens.homescreen
 
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.CircularProgressIndicator

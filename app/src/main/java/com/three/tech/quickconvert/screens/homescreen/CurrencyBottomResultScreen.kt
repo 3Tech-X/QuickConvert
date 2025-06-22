@@ -1,4 +1,4 @@
-package com.three.tech.quickconvert.screens
+package com.three.tech.quickconvert.screens.homescreen
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
