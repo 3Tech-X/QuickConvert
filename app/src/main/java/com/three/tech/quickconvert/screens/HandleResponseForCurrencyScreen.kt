@@ -6,6 +6,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
@@ -16,20 +20,16 @@ import com.three.tech.quickconvert.networking.util.NetworkResult
 @Composable
 fun qCResponse(
     response: State<NetworkResult?>,
-    currency: Currency?,
-    noInternetMessage: String?,
     errorMessage: NetworkError?,
-    isLoading: (Boolean) -> Unit,
 ): Triple<Currency?, NetworkError?, String?> {
-    var currency1 = currency
-    var noInternetMessage1 = noInternetMessage
+    var currency by remember { mutableStateOf<Currency?>(null) }
+    var noInternetMessage by remember { mutableStateOf<String?>(null) }
     var errorMessage1 = errorMessage
     response.value?.let { apiResponse ->
-        isLoading(false)
         when (apiResponse) {
             is NetworkResult.Success -> {
-                currency1 = apiResponse.data
-                noInternetMessage1 = null
+                currency = apiResponse.data
+                noInternetMessage = null
             }
 
             is NetworkResult.Error -> {
@@ -37,7 +37,7 @@ fun qCResponse(
             }
         }
     }
-    return Triple(currency1, errorMessage1, noInternetMessage1)
+    return Triple(currency, errorMessage1, noInternetMessage)
 }
 
 @Composable

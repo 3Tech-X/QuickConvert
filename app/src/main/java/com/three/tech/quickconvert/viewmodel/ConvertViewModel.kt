@@ -20,17 +20,23 @@ class ConvertViewModel @Inject constructor(
     val networkResult: StateFlow<NetworkResult?>
         get() = _networkResult.asStateFlow()
 
+    private var _isLoading = MutableStateFlow(false)
+    val isLoading: StateFlow<Boolean>
+        get() = _isLoading.asStateFlow()
+
     fun getCalculatedCurrencyValue(
         baseCurrency: String,
         targetCurrency: String,
         amount: String
     ) {
         viewModelScope.launch {
+            _isLoading.value = true
             _networkResult.value = service.getCurrencyValue(
                 baseCurrency,
                 targetCurrency,
                 amount.toFloat()
             )
+            _isLoading.value = false
         }
     }
 }
