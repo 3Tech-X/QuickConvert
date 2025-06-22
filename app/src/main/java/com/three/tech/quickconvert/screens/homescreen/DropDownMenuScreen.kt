@@ -71,7 +71,7 @@ fun SearchableDropdown(
                 value = selectedText,
                 onValueChange = {
                 },
-                shape = RoundedCornerShape(12.dp), // 👈 This makes all corners rounded
+                shape = RoundedCornerShape(12.dp),
                 colors = TextFieldDefaults.colors(
                     focusedIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent,
@@ -80,7 +80,7 @@ fun SearchableDropdown(
                 label = { Text(label) },
                 trailingIcon = {
                     Icon(
-                        painter = painterResource(id = if (showDialog) R.drawable.back_arrow else R.drawable.convert_bottom_icon),
+                        painter = painterResource(id = R.drawable.down_arrow),
                         contentDescription = null,
                         modifier = Modifier.padding(8.dp)
                     )
@@ -88,7 +88,8 @@ fun SearchableDropdown(
                 readOnly = true,
                 interactionSource = interactionSource,
                 modifier = Modifier
-                    .fillMaxWidth().clickable {
+                    .fillMaxWidth()
+                    .clickable {
                         focusManager.clearFocus()
                     }
             )
@@ -104,7 +105,7 @@ fun SearchableDropdown(
                 AlertDialog(
                     onDismissRequest = {
                         showDialog = false
-                                       },
+                    },
                     confirmButton = {},
                     title = { Text("Search & Select") },
                     text = {
