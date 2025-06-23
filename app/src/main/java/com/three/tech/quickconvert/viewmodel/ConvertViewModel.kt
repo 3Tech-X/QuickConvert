@@ -20,6 +20,10 @@ class ConvertViewModel @Inject constructor(
     val networkResult: StateFlow<NetworkResult?>
         get() = _networkResult.asStateFlow()
 
+    private var _uiState = MutableStateFlow(QCHomePageData())
+    val uiState: StateFlow<QCHomePageData>
+        get() = _uiState.asStateFlow()
+
     private var _isLoading = MutableStateFlow(false)
     val isLoading: StateFlow<Boolean>
         get() = _isLoading.asStateFlow()
@@ -39,4 +43,22 @@ class ConvertViewModel @Inject constructor(
             _isLoading.value = false
         }
     }
+
+    fun onValueChange(amount: String) {
+        _uiState.value = _uiState.value.copy(currencyValue = amount)
+    }
+
+    fun validateInputField(amount: String) {
+        return if (amount.isEmpty()) {
+            _uiState.value = _uiState.value.copy(currencyValueError = true)
+        } else {
+            _uiState.value = _uiState.value.copy(currencyValueError = false)
+
+        }
+    }
 }
+
+data class QCHomePageData(
+    val currencyValue: String = "",
+    val currencyValueError: Boolean = false,
+)

@@ -39,7 +39,7 @@ fun FloatingBottomBar(items: List<BottomBarItem>) {
         modifier = Modifier
             .background(Color.Transparent)
             .fillMaxWidth()
-            .padding(24.dp),
+            .padding(start = 20.dp, bottom = 2.dp, end = 20.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -57,7 +57,7 @@ fun FloatingBottomBar(items: List<BottomBarItem>) {
                     .background(MaterialTheme.colorScheme.surface.copy(alpha = 0.9f))
                     .fillMaxWidth()
                     .border(
-                        3.dp, Brush.verticalGradient(
+                        1.dp, Brush.verticalGradient(
                             colors = listOf(
                                 MaterialTheme.colorScheme.primary,
                                 Color.Transparent,
@@ -89,13 +89,13 @@ fun FloatingBottomBar(items: List<BottomBarItem>) {
                         Icon(
                             painter = painterResource(id = item.icon),
                             contentDescription = item.label,
-                            modifier = Modifier.size(22.dp),
+                            modifier = Modifier.size(20.dp),
                             tint = MaterialTheme.colorScheme.onSurface
                         )
                         Spacer(modifier = Modifier.width(8.dp))
                         Text(
                             text = item.label,
-                            style = MaterialTheme.typography.bodyLarge,
+                            style = MaterialTheme.typography.bodySmall,
                             color = MaterialTheme.colorScheme.onSurface
                         )
                     }

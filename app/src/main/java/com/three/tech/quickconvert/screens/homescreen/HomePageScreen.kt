@@ -21,6 +21,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -32,6 +33,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -52,8 +54,12 @@ fun QCHomePage(onClose: () -> Unit) {
     val errorMessage by remember { mutableStateOf<NetworkError?>(null) }
 
     val networkResult = currencyViewModel.networkResult.collectAsState()
+    val inputFields = currencyViewModel.uiState.collectAsState()
+    var isInitialCompositionCompleted by remember { mutableStateOf(false) }
     val isLoading = currencyViewModel.isLoading.collectAsState()
     val response = qCResponse(networkResult, errorMessage)
+    val focusManager = LocalFocusManager.current
+
     Scaffold(
         modifier = Modifier
             .fillMaxSize()
@@ -94,10 +100,14 @@ fun QCHomePage(onClose: () -> Unit) {
         }
 
     ) { innerPadding ->
+        LaunchedEffect(Unit) { isInitialCompositionCompleted = true }
         Box(
             modifier = Modifier
                 .fillMaxSize()
                 .background(color = MaterialTheme.colorScheme.background)
+                .clickable {
+                    focusManager.clearFocus()
+                }
         ) {
             Column(
                 modifier = Modifier
@@ -174,10 +184,14 @@ fun QCHomePage(onClose: () -> Unit) {
                 )
 
                 HandleAmountAndButton(
-                    currencyViewModel,
-                    baseCurrency,
-                    targetCurrency,
-                    isLoading
+                    currencyViewModel, baseCurrency,
+                    QCAmountAndButtonData(
+                        targetCurrency,
+                        isLoading,
+                        focusManager,
+                        inputFields,
+                        isInitialCompositionCompleted
+                    )
                 )
 
                 ResultText(response)
