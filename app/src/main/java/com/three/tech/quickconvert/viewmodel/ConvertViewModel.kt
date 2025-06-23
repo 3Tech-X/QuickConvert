@@ -28,7 +28,7 @@ class ConvertViewModel @Inject constructor(
     val isLoading: StateFlow<Boolean>
         get() = _isLoading.asStateFlow()
 
-    fun getCalculatedCurrencyValue(
+    private fun getCalculatedCurrencyValue(
         baseCurrency: String,
         targetCurrency: String,
         amount: String
@@ -73,4 +73,6 @@ class ConvertViewModel @Inject constructor(
 data class QCHomePageData(
     val currencyValue: String = "",
     val currencyValueError: Boolean = false,
+    val baseCurrencyError: Boolean = false,
+    val targetCurrencyError: Boolean = false
 )
