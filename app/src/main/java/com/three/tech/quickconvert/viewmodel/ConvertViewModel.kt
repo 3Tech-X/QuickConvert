@@ -49,12 +49,24 @@ class ConvertViewModel @Inject constructor(
     }
 
     fun validateInputField(amount: String) {
-        return if (amount.isEmpty()) {
+        if (amount.isEmpty()) {
             _uiState.value = _uiState.value.copy(currencyValueError = true)
         } else {
             _uiState.value = _uiState.value.copy(currencyValueError = false)
 
         }
+    }
+
+    fun handleButtonClick(checkForInternet: Boolean, baseCurrency: String, targetCurrency: String) {
+        validateInputField(_uiState.value.currencyValue)
+        if (!_uiState.value.currencyValueError && checkForInternet) {
+            getCalculatedCurrencyValue(
+                baseCurrency = baseCurrency,
+                targetCurrency = targetCurrency,
+                amount = _uiState.value.currencyValue
+            )
+        }
+
     }
 }
 

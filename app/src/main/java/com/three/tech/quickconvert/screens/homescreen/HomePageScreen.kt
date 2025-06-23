@@ -193,9 +193,7 @@ fun QCHomePage(onClose: () -> Unit) {
                         isInitialCompositionCompleted
                     )
                 )
-
                 ResultText(response)
-
             }
         }
     }

@@ -36,7 +36,6 @@ fun HandleAmountAndButton(
     currencyViewModel: ConvertViewModel,
     baseCurrency: String,
     qcHomePageData: QCAmountAndButtonData
-
 ) {
     val context = LocalContext.current
     var isAmountFieldFocused by remember { mutableStateOf(false) }
@@ -63,11 +62,7 @@ fun HandleAmountAndButton(
                     disabledIndicatorColor = Color.Transparent,
                 ),
                 isError = !isAmountFieldFocused && inputFields.value.currencyValueError,
-                keyboardActions = KeyboardActions(
-                    onNext = {
-                        focusManager.clearFocus()
-                    }
-                ),
+                keyboardActions = KeyboardActions(onNext = { focusManager.clearFocus() }),
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Number,
                     imeAction = ImeAction.Done
@@ -106,24 +101,15 @@ fun HandleAmountAndButton(
 private fun handleOnButtonClick(
     focusManager: FocusManager,
     currencyViewModel: ConvertViewModel,
-    buttonClickData: ButtonClickData
+    buttonClickData: ButtonClickData,
 ) {
+    focusManager.clearFocus()
     buttonClickData.apply {
-        focusManager.clearFocus()
-        currencyViewModel.validateInputField(inputFields.value.currencyValue)
-        if (inputFields.value.currencyValueError) {
-            // Test
-        } else {
-            if (NetworkUtil.checkForInternet(context)) {
-                currencyViewModel.getCalculatedCurrencyValue(
-                    baseCurrency = baseCurrency,
-                    targetCurrency = targetCurrency,
-                    amount = inputFields.value.currencyValue
-                )
-            } else {
-                // noInternetMessage = "No internet connection"
-            }
-        }
+        currencyViewModel.handleButtonClick(
+            NetworkUtil.checkForInternet(context),
+            baseCurrency,
+            targetCurrency
+        )
     }
 }
 
