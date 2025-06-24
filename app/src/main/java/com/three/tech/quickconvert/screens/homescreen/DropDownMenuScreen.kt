@@ -113,7 +113,13 @@ fun SearchableDropdown(
                             TextField(
                                 value = searchQuery,
                                 onValueChange = { searchQuery = it },
+                                shape = RoundedCornerShape(12.dp),
                                 label = { Text("Search") },
+                                colors = TextFieldDefaults.colors(
+                                    focusedIndicatorColor = Color.Transparent,
+                                    unfocusedIndicatorColor = Color.Transparent,
+                                    disabledIndicatorColor = Color.Transparent
+                                ),
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .padding(bottom = 8.dp)
