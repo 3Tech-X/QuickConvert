@@ -38,6 +38,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.three.tech.quickconvert.R
+import com.three.tech.quickconvert.currencyconstant.getAllCurrencyCodes
 import com.three.tech.quickconvert.networking.dataclass.NetworkError
 import com.three.tech.quickconvert.screens.navigationbar.CustomNavigationBar
 import com.three.tech.quickconvert.viewmodel.ConvertViewModel
@@ -156,10 +157,7 @@ fun QCHomePage(onClose: () -> Unit) {
 
                 }
                 SearchableDropdown(
-                    items = listOf(
-                        "USD", "EUR", "GBP", "INR", "JPY", "AUD", "CAD", "CHF", "CNY", "SEK",
-                        "NZD", "MXN", "SGD", "HKD", "NOK", "KRW"
-                    ),
+                    items = getAllCurrencyCodes(),
                     label = "Base Currency",
                     onItemSelected = { selectedItem ->
                         baseCurrency = selectedItem
@@ -170,10 +168,7 @@ fun QCHomePage(onClose: () -> Unit) {
                 )
 
                 SearchableDropdown(
-                    items = listOf(
-                        "USD", "EUR", "GBP", "INR", "JPY", "AUD", "CAD", "CHF", "CNY", "SEK",
-                        "NZD", "MXN", "SGD", "HKD", "NOK", "KRW"
-                    ),
+                    items = getAllCurrencyCodes(),
                     label = "Convert to Currency",
                     onItemSelected = { selectedItem ->
                         targetCurrency = selectedItem

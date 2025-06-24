@@ -1,7 +1,9 @@
 package com.three.tech.quickconvert.screens.homescreen
 
 import android.content.Context
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -78,23 +80,27 @@ fun HandleAmountAndButton(
                 )
             }
         }
-
-
-        Button(
+        Row(
             modifier = Modifier
+                .fillMaxWidth()
                 .padding(horizontal = 16.dp),
-            shape = RoundedCornerShape(12.dp),
-            onClick = {
-                handleOnButtonClick(
-                    focusManager,
-                    currencyViewModel,
-                    ButtonClickData(inputFields, context, baseCurrency, targetCurrency)
+            horizontalArrangement = Arrangement.Start
+        ) {
+
+            Button(
+                shape = RoundedCornerShape(12.dp),
+                onClick = {
+                    handleOnButtonClick(
+                        focusManager,
+                        currencyViewModel,
+                        ButtonClickData(inputFields, context, baseCurrency, targetCurrency)
+                    )
+                },
+                colors = ButtonDefaults.buttonColors(
+                    contentColor = Color.Black
                 )
-            },
-            colors = ButtonDefaults.buttonColors(
-                contentColor = Color.Black
-            )
-        ) { HandleLoaderOnClick(isLoading.value) }
+            ) { HandleLoaderOnClick(isLoading.value) }
+        }
     }
 }
 
