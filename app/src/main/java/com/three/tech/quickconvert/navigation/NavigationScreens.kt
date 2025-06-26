@@ -5,6 +5,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import com.three.tech.quickconvert.screens.about.AboutScreen
+import com.three.tech.quickconvert.screens.bmi.BMICalculatorScreen
 import com.three.tech.quickconvert.screens.homescreen.QCHomePage
 
 internal fun NavGraphBuilder.navigationScreens(
@@ -21,6 +22,16 @@ internal fun NavGraphBuilder.navigationScreens(
 
     composable(route = QCComponentRoute.About.route) {
         AboutScreen(
+            onBackPress = {
+                navController.navigateUp()
+            }
+        ) {
+            bottomBarClickHandler(it, navController)
+        }
+    }
+
+    composable(route = QCComponentRoute.BMI.route) {
+        BMICalculatorScreen(
             onBackPress = {
                 navController.navigateUp()
             }
