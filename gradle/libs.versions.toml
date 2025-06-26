@@ -8,6 +8,7 @@ coreKtx = "1.16.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
+material = "1.7.8"
 lifecycleRuntimeKtx = "2.9.1"
 navigation-fragment = "2.9.0"
 hilt-navigation = "1.2.0"
@@ -17,6 +18,7 @@ composeBom = "2024.12.01"
 ktor = "2.3.12"
 workRuntimeKtx = "2.10.0"
 navigationComposeJvmstubs = "2.9.0"
+browser = "1.8.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -40,6 +42,8 @@ androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-toolin
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+androidx-browser = { group = "androidx.browser", name = "browser", version.ref = "browser" }
+androidx-material = { group = "androidx.compose.material", name = "material-icons-extended", version.ref = "material" }
 androidx-navigation = { group = "androidx.navigation", name = "navigation-fragment", version.ref = "navigation-fragment" }
 androidx-navigation-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigation-fragment" }
 androidx-navigation-safe-args = { group = "androidx.navigation", name = "navigation-safe-args-gradle-plugin", version.ref = "navigation-fragment" }

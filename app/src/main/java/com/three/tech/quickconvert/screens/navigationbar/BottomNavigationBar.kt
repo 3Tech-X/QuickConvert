@@ -1,49 +1,37 @@
 package com.three.tech.quickconvert.screens.navigationbar
 
-import android.content.Context
-import android.widget.Toast
 import androidx.compose.runtime.Composable
 import com.three.tech.quickconvert.R
 import com.three.tech.quickconvert.navbar.FloatingBottomBar
 import com.three.tech.quickconvert.navigation.BottomBarItem
+import com.three.tech.quickconvert.navigation.NavigationType
 
 @Composable
-fun CustomNavigationBar(context: Context) {
+fun CustomNavigationBar(clickedParam: Int, onNavBarClickedClicked: (NavigationType) -> Unit) {
     FloatingBottomBar(
         items = listOf(
             BottomBarItem(
                 label = "Convert",
                 icon = R.drawable.convert_bottom_icon,
                 onClick = {
-                    Toast.makeText(
-                        context,
-                        "Convert Clicked",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    onNavBarClickedClicked(NavigationType.HOME)
                 }
             ),
             BottomBarItem(
                 label = "BMI",
                 icon = R.drawable.bottom_bmi_icon,
                 onClick = {
-                    Toast.makeText(
-                        context,
-                        "BMI Clicked",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    onNavBarClickedClicked(NavigationType.BMI)
                 }
             ),
             BottomBarItem(
                 label = "About",
                 icon = R.drawable.info_bottom_icon,
                 onClick = {
-                    Toast.makeText(
-                        context,
-                        "About Clicked",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    onNavBarClickedClicked(NavigationType.ABOUT)
                 }
             )
-        )
+        ),
+        clickedIndex = clickedParam,
     )
 }
