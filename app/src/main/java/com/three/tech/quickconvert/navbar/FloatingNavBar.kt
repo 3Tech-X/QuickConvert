@@ -32,8 +32,8 @@ import com.three.tech.quickconvert.navigation.BottomBarItem
 
 
 @Composable
-fun FloatingBottomBar(items: List<BottomBarItem>) {
-    var selectedIndex by remember { mutableIntStateOf(0) }
+fun FloatingBottomBar(items: List<BottomBarItem>, clickedIndex: Int) {
+    var selectedIndex by remember { mutableIntStateOf(clickedIndex) }
 
     Row(
         modifier = Modifier

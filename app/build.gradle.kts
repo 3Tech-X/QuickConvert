@@ -66,6 +66,8 @@ dependencies {
     implementation(libs.bundles.ktor)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.ui)
+    implementation(libs.androidx.browser)
+    implementation(libs.androidx.material)
 
     //Splash Screen Dependencies
     implementation(libs.splashscreen)
