@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">QuickConvert</string>
+    <string name="app_name" translatable="false">Quick Convert</string>
+    <string name="qc_title">Quick Convert</string>
 </resources>
