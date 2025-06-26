@@ -14,6 +14,8 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Cancel
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -31,6 +33,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
@@ -39,6 +42,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.three.tech.quickconvert.R
 import com.three.tech.quickconvert.currencyconstant.getAllCurrencyCodes
+import com.three.tech.quickconvert.navigation.NavigationType
 import com.three.tech.quickconvert.networking.dataclass.NetworkError
 import com.three.tech.quickconvert.screens.navigationbar.CustomNavigationBar
 import com.three.tech.quickconvert.viewmodel.ConvertViewModel
@@ -46,7 +50,7 @@ import com.three.tech.quickconvert.viewmodel.ConvertViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun QCHomePage(onClose: () -> Unit) {
+fun QCHomePage(onClose: () -> Unit, onNavBarClickedClicked: (NavigationType) -> Unit) {
     val scrollState = rememberScrollState()
     val context = LocalContext.current
     val currencyViewModel = hiltViewModel<ConvertViewModel>()
@@ -65,7 +69,6 @@ fun QCHomePage(onClose: () -> Unit) {
         modifier = Modifier
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background), topBar = {
-
             androidx.compose.material3.CenterAlignedTopAppBar(
                 modifier = Modifier.background(MaterialTheme.colorScheme.background),
                 title = {
@@ -74,21 +77,22 @@ fun QCHomePage(onClose: () -> Unit) {
                         style = MaterialTheme.typography.titleLarge
                     )
                 },
-                navigationIcon = {
+                actions = {
                     Box(
                         modifier = Modifier
                             .padding(8.dp)
                             .clickable {
                                 onClose()
                             }
-                            .size(24.dp),
+                            .size(32.dp),
                         contentAlignment = Alignment.Center,
                     ) {
                         Image(
-                            painter = painterResource(id = R.drawable.back_arrow),
+                            painter = rememberVectorPainter(image = Icons.Outlined.Cancel),
                             contentDescription = "Quick Convert Logo",
-                            modifier = Modifier.fillMaxSize(),
-                            contentScale = ContentScale.Fit,
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .size(32.dp),
                             colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onBackground)
                         )
                     }
@@ -97,7 +101,9 @@ fun QCHomePage(onClose: () -> Unit) {
         },
 
         bottomBar = {
-            CustomNavigationBar(context)
+            CustomNavigationBar(0) {
+                onNavBarClickedClicked(it)
+            }
         }
 
     ) { innerPadding ->
