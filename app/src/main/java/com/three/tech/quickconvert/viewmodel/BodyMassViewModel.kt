@@ -25,22 +25,26 @@ class BodyMassViewModel @Inject constructor() : ViewModel() {
         }
     }
 
-    fun validateInputField(heightValue: String, weightValue: String) {
+    fun validateHeightValue(heightValue: String) {
         if (heightValue.isBlank() || heightValue.toFloatOrNull() == null) {
             _uiState.value = _uiState.value.copy(heightValueError = true)
-        } else if (weightValue.isBlank() || weightValue.toFloatOrNull() == null) {
-            _uiState.value = _uiState.value.copy(weightValueError = true)
-
         } else {
-            _uiState.value = _uiState.value.copy(
-                heightValueError = false,
-                weightValueError = false
-            )
+            _uiState.value = _uiState.value.copy(heightValueError = false)
+        }
+    }
+
+
+    fun validateWeightValue(weightValue: String) {
+        if (weightValue.isBlank() || weightValue.toFloatOrNull() == null) {
+            _uiState.value = _uiState.value.copy(weightValueError = true)
+        } else {
+            _uiState.value = _uiState.value.copy(weightValueError = false)
         }
     }
 
     fun calculateBmi(heightValue: String, weightValue: String) {
-        validateInputField(heightValue, weightValue)
+        validateHeightValue(heightValue)
+        validateWeightValue(weightValue)
         if (!uiState.value.heightValueError && !uiState.value.weightValueError) {
             val heightM = heightValue.toFloat() / 100
             val bmi = (weightValue.toFloat() / (heightM * heightM))
@@ -48,6 +52,7 @@ class BodyMassViewModel @Inject constructor() : ViewModel() {
             _uiState.value = _uiState.value.copy(bmiValue = bmi.toString())
         }
     }
+
     private fun getBMICategory(bmi: Double): String {
         return when {
             bmi < 18.5 -> "Underweight"

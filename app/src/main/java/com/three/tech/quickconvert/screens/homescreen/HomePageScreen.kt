@@ -1,9 +1,11 @@
 package com.three.tech.quickconvert.screens.homescreen
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -64,6 +66,9 @@ fun QCHomePage(onClose: () -> Unit, onNavBarClickedClicked: (NavigationType) -> 
     val isLoading = currencyViewModel.isLoading.collectAsState()
     val response = qCResponse(networkResult, errorMessage)
     val focusManager = LocalFocusManager.current
+    BackHandler {
+        onClose()
+    }
 
     Scaffold(
         modifier = Modifier
@@ -112,9 +117,11 @@ fun QCHomePage(onClose: () -> Unit, onNavBarClickedClicked: (NavigationType) -> 
             modifier = Modifier
                 .fillMaxSize()
                 .background(color = MaterialTheme.colorScheme.background)
-                .clickable {
-                    focusManager.clearFocus()
-                }
+                .clickable(
+                    indication = null,
+                    interactionSource = remember { MutableInteractionSource() },
+                    onClick = { focusManager.clearFocus() }
+                )
         ) {
             Column(
                 modifier = Modifier

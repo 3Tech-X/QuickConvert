@@ -12,6 +12,10 @@ import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusManager
 import androidx.compose.ui.focus.onFocusChanged
@@ -29,6 +33,7 @@ fun BMITextFields(
     focusManager: FocusManager,
     inputFields: State<BMIPageData>
 ) {
+    var isHeightFieldFocused by remember { mutableStateOf(false) }
     Column {
         TextField(
             value = inputFields.value.heightValue,
@@ -40,10 +45,10 @@ fun BMITextFields(
                 .fillMaxWidth()
                 .onFocusChanged {
                     if (!isInitialCompositionCompleted) return@onFocusChanged
+                    isHeightFieldFocused = it.isFocused
                     if (!it.isFocused) {
-                        bmiViewModel.validateInputField(
+                        bmiViewModel.validateHeightValue(
                             heightValue = inputFields.value.heightValue,
-                            weightValue = inputFields.value.weightValue
                         )
                     }
                 },
@@ -52,16 +57,16 @@ fun BMITextFields(
                 unfocusedIndicatorColor = Color.Transparent,
                 disabledIndicatorColor = Color.Transparent,
             ),
-            isError = false,
+            isError = !isHeightFieldFocused && inputFields.value.heightValueError,
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Number,
                 imeAction = ImeAction.Next
             ),
         )
 
-        if (false) {
+        if (inputFields.value.heightValueError && !isHeightFieldFocused) {
             Text(
-                text = "Please enter a valid amount",
+                text = "Please enter a valid height",
                 color = MaterialTheme.colorScheme.error,
                 style = MaterialTheme.typography.bodySmall,
                 modifier = Modifier.padding(start = 16.dp, top = 4.dp)
@@ -78,6 +83,7 @@ private fun WeightTextField(
     isInitialCompositionCompleted: Boolean,
     focusManager: FocusManager
 ) {
+    var isWeightFieldFocused by remember { mutableStateOf(false) }
     Column {
         TextField(
             value = inputFields.value.weightValue,
@@ -91,9 +97,9 @@ private fun WeightTextField(
                 .fillMaxWidth()
                 .onFocusChanged {
                     if (!isInitialCompositionCompleted) return@onFocusChanged
+                    isWeightFieldFocused = it.isFocused
                     if (!it.isFocused) {
-                        bmiViewModel.validateInputField(
-                            heightValue = inputFields.value.heightValue,
+                        bmiViewModel.validateWeightValue(
                             weightValue = inputFields.value.weightValue
                         )
                     }
@@ -103,7 +109,7 @@ private fun WeightTextField(
                 unfocusedIndicatorColor = Color.Transparent,
                 disabledIndicatorColor = Color.Transparent,
             ),
-            isError = false,
+            isError = !isWeightFieldFocused && inputFields.value.weightValueError,
             keyboardActions = KeyboardActions(onNext = { focusManager.clearFocus() }),
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Number,
@@ -111,9 +117,9 @@ private fun WeightTextField(
             ),
         )
 
-        if (false) {
+        if (inputFields.value.weightValueError && !isWeightFieldFocused) {
             Text(
-                text = "Please enter a valid amount",
+                text = "Please enter a valid weight",
                 color = MaterialTheme.colorScheme.error,
                 style = MaterialTheme.typography.bodySmall,
                 modifier = Modifier.padding(start = 16.dp, top = 4.dp)

@@ -23,7 +23,11 @@ internal fun NavGraphBuilder.navigationScreens(
     composable(route = QCComponentRoute.About.route) {
         AboutScreen(
             onBackPress = {
-                navController.navigateUp()
+                navController.navigate(QCComponentRoute.Home.route) {
+                    popUpTo(QCComponentRoute.Home.route) {
+                        inclusive = true
+                    }
+                }
             }
         ) {
             bottomBarClickHandler(it, navController)
@@ -33,7 +37,11 @@ internal fun NavGraphBuilder.navigationScreens(
     composable(route = QCComponentRoute.BMI.route) {
         BMICalculatorScreen(
             onBackPress = {
-                navController.navigateUp()
+                navController.navigate(QCComponentRoute.Home.route) {
+                    popUpTo(QCComponentRoute.Home.route) {
+                        inclusive = true
+                    }
+                }
             }
         ) {
             bottomBarClickHandler(it, navController)

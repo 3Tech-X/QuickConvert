@@ -1,5 +1,6 @@
 package com.three.tech.quickconvert.screens.about
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -41,6 +42,9 @@ import com.three.tech.quickconvert.util.openAsCustomTab
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AboutScreen(onBackPress: () -> Unit, onNavBarClickedClicked: (NavigationType) -> Unit) {
+    BackHandler {
+        onBackPress()
+    }
     val context = LocalContext.current
     Scaffold(
         modifier = Modifier

@@ -1,9 +1,11 @@
 package com.three.tech.quickconvert.screens.bmi
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -57,6 +59,10 @@ fun BMICalculatorScreen(onBackPress: () -> Unit, onNavBarClickedClicked: (Naviga
     val inputFields = bodyMassViewModel.uiState.collectAsState()
     var isInitialCompositionCompleted by remember { mutableStateOf(false) }
 
+    BackHandler {
+        onBackPress()
+    }
+
     Scaffold(
         modifier = Modifier
             .fillMaxSize()
@@ -103,9 +109,11 @@ fun BMICalculatorScreen(onBackPress: () -> Unit, onNavBarClickedClicked: (Naviga
             modifier = Modifier
                 .fillMaxSize()
                 .background(color = MaterialTheme.colorScheme.background)
-                .clickable {
-                    focusManager.clearFocus()
-                }
+                .clickable(
+                    indication = null,
+                    interactionSource = remember { MutableInteractionSource() },
+                    onClick = { focusManager.clearFocus() }
+                )
         ) {
             Column(
                 modifier = Modifier
@@ -164,6 +172,7 @@ fun BMICalculatorScreen(onBackPress: () -> Unit, onNavBarClickedClicked: (Naviga
                         .padding(12.dp),
                     shape = RoundedCornerShape(12.dp),
                     onClick = {
+                        focusManager.clearFocus()
                         bodyMassViewModel.calculateBmi(
                             heightValue = inputFields.value.heightValue,
                             weightValue = inputFields.value.weightValue
