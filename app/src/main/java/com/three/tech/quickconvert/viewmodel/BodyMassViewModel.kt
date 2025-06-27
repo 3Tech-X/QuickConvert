@@ -5,6 +5,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import java.util.Locale
 import javax.inject.Inject
 
 @HiltViewModel
@@ -49,7 +50,7 @@ class BodyMassViewModel @Inject constructor() : ViewModel() {
             val heightM = heightValue.toFloat() / 100
             val bmi = (weightValue.toFloat() / (heightM * heightM))
             _uiState.value = _uiState.value.copy(typeOfBmi = getBMICategory(bmi.toDouble()))
-            _uiState.value = _uiState.value.copy(bmiValue = bmi.toString())
+            _uiState.value = _uiState.value.copy(bmiValue = String.format(Locale.US,"%.2f", bmi))
         }
     }
 
