@@ -17,7 +17,7 @@
 - 🎯 **Clean and Modern UI**  
   Designed with user experience in mind — intuitive layout and fast interactions.
 
-## 📱 Screenshots
+## 📱 Preview
 
 | Light                               | Dark                      |
 |-------------------------------------|---------------------------|
