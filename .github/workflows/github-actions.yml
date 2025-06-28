@@ -67,7 +67,10 @@ jobs:
       - name: Change wrapper permissions
         run: chmod +x ./gradlew
       - name: Assemble Clean Release
-        run:
+        run: |
+          echo "GITHUB_REF: $GITHUB_REF"
+          echo "GITHUB_REF_NAME: $GITHUB_REF_NAME"
+          echo "GITHUB_HEAD_REF: $GITHUB_HEAD_REF"
           if [[ "${GITHUB_REF_NAME}" == "develop" || "${GITHUB_REF_NAME}" == "feature/*/*" ]]; then
             ./gradlew clean assembleRelease
             else
