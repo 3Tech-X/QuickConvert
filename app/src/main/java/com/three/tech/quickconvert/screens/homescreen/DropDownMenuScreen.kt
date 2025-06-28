@@ -68,8 +68,7 @@ fun SearchableDropdown(
         ) {
             TextField(
                 value = selectedText,
-                onValueChange = {
-                },
+                onValueChange = { },
                 shape = RoundedCornerShape(12.dp),
                 colors = TextFieldDefaults.colors(
                     focusedIndicatorColor = Color.Transparent,
