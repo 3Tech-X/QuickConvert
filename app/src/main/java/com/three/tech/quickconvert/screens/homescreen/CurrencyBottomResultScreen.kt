@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.dp
 import com.three.tech.quickconvert.R
 import com.three.tech.quickconvert.networking.dataclass.Currency
 import com.three.tech.quickconvert.networking.dataclass.NetworkError
+import java.util.Locale
 
 @Composable
 fun ResultText(response: Triple<Currency?, NetworkError?, String?>) {
@@ -64,7 +65,7 @@ fun ResultText(response: Triple<Currency?, NetworkError?, String?>) {
                             modifier = Modifier
                                 .padding(14.dp)
                                 .align(Alignment.BottomStart),
-                            text = currency.conversionResult.toString() + " " + currency.targetCode,
+                            text = String.format(Locale.US,"%.2f", currency.conversionResult) + " " + currency.targetCode,
                             style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold),
                             color = Color.White
                         )

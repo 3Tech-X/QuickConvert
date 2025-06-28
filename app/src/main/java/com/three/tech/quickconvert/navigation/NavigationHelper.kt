@@ -9,6 +9,6 @@ fun bottomBarClickHandler(
     when (navigationType) {
         NavigationType.ABOUT -> navController.navigate(QCComponentRoute.About.route)
         NavigationType.HOME -> navController.navigate(QCComponentRoute.Home.route)
-        NavigationType.BMI -> navController.navigate(QCComponentRoute.About.route)
+        NavigationType.BMI -> navController.navigate(QCComponentRoute.BMI.route)
     }
 }
