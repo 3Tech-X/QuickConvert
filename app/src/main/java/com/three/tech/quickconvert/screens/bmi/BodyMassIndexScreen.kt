@@ -1,4 +1,4 @@
-package com.three.tech.quickconvert.screens.homescreen
+package com.three.tech.quickconvert.screens.bmi
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.BorderStroke
@@ -16,8 +16,8 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Cancel
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -35,7 +35,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
@@ -43,31 +42,25 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.three.tech.quickconvert.R
-import com.three.tech.quickconvert.currencyconstant.getAllCurrencyCodes
 import com.three.tech.quickconvert.navigation.NavigationType
-import com.three.tech.quickconvert.networking.dataclass.NetworkError
+import com.three.tech.quickconvert.screens.bmi.helper.BMIProgressBar
+import com.three.tech.quickconvert.screens.bmi.helper.BMITextFields
 import com.three.tech.quickconvert.screens.navigationbar.CustomNavigationBar
-import com.three.tech.quickconvert.viewmodel.ConvertViewModel
-
+import com.three.tech.quickconvert.viewmodel.BodyMassViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun QCHomePage(onClose: () -> Unit, onNavBarClickedClicked: (NavigationType) -> Unit) {
-    val scrollState = rememberScrollState()
+fun BMICalculatorScreen(onBackPress: () -> Unit, onNavBarClickedClicked: (NavigationType) -> Unit) {
     val context = LocalContext.current
-    val currencyViewModel = hiltViewModel<ConvertViewModel>()
-    var baseCurrency by remember { mutableStateOf("") }
-    var targetCurrency by remember { mutableStateOf("") }
-    val errorMessage by remember { mutableStateOf<NetworkError?>(null) }
-
-    val networkResult = currencyViewModel.networkResult.collectAsState()
-    val inputFields = currencyViewModel.uiState.collectAsState()
-    var isInitialCompositionCompleted by remember { mutableStateOf(false) }
-    val isLoading = currencyViewModel.isLoading.collectAsState()
-    val response = qCResponse(networkResult, errorMessage)
+    val scrollState = rememberScrollState()
     val focusManager = LocalFocusManager.current
+
+    val bodyMassViewModel = hiltViewModel<BodyMassViewModel>()
+    val inputFields = bodyMassViewModel.uiState.collectAsState()
+    var isInitialCompositionCompleted by remember { mutableStateOf(false) }
+
     BackHandler {
-        onClose()
+        onBackPress()
     }
 
     Scaffold(
@@ -78,26 +71,25 @@ fun QCHomePage(onClose: () -> Unit, onNavBarClickedClicked: (NavigationType) -> 
                 modifier = Modifier.background(MaterialTheme.colorScheme.background),
                 title = {
                     Text(
-                        text = context.getString(R.string.qc_title),
+                        text = context.getString(R.string.qc_main_title_bmi),
                         style = MaterialTheme.typography.titleLarge
                     )
                 },
-                actions = {
+                navigationIcon = {
                     Box(
                         modifier = Modifier
                             .padding(8.dp)
                             .clickable {
-                                onClose()
+                                onBackPress()
                             }
-                            .size(32.dp),
+                            .size(24.dp),
                         contentAlignment = Alignment.Center,
                     ) {
                         Image(
-                            painter = rememberVectorPainter(image = Icons.Outlined.Cancel),
+                            painter = painterResource(id = R.drawable.back_arrow),
                             contentDescription = "Quick Convert Logo",
                             modifier = Modifier
-                                .fillMaxSize()
-                                .size(32.dp),
+                                .fillMaxSize(),
                             colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onBackground)
                         )
                     }
@@ -106,7 +98,7 @@ fun QCHomePage(onClose: () -> Unit, onNavBarClickedClicked: (NavigationType) -> 
         },
 
         bottomBar = {
-            CustomNavigationBar(0) {
+            CustomNavigationBar(1) {
                 onNavBarClickedClicked(it)
             }
         }
@@ -149,59 +141,104 @@ fun QCHomePage(onClose: () -> Unit, onNavBarClickedClicked: (NavigationType) -> 
                         Image(
                             modifier = Modifier
                                 .fillMaxWidth(),
-                            painter = painterResource(id = R.drawable.qc_home_image),
+                            painter = painterResource(id = R.drawable.qc_bmi_image),
                             contentScale = ContentScale.FillWidth,
                             contentDescription = "Quick Convert Logo"
                         )
                         Text(
-                            text = "Currency Conversion",
+                            text = context.getString(R.string.qc_title_bmi),
                             modifier = Modifier.padding(16.dp),
                             color = Color.Black,
                             style = MaterialTheme.typography.headlineMedium
                         )
 
                         Text(
-                            text = "Enter details below",
+                            text = context.getString(R.string.qc_desc_bmi),
                             modifier = Modifier.padding(16.dp),
                             color = Color.Black,
                             style = MaterialTheme.typography.bodyMedium
                         )
                     }
-
                 }
-                SearchableDropdown(
-                    items = getAllCurrencyCodes(),
-                    label = "Base Currency",
-                    onItemSelected = { selectedItem ->
-                        baseCurrency = selectedItem
-                    },
-                    modifier = Modifier
-                        .padding(horizontal = 8.dp)
-                        .fillMaxWidth(),
+                BMITextFields(
+                    isInitialCompositionCompleted,
+                    bodyMassViewModel,
+                    focusManager,
+                    inputFields
                 )
-
-                SearchableDropdown(
-                    items = getAllCurrencyCodes(),
-                    label = "Convert to Currency",
-                    onItemSelected = { selectedItem ->
-                        targetCurrency = selectedItem
-                    },
+                Button(
                     modifier = Modifier
-                        .padding(horizontal = 8.dp)
-                        .fillMaxWidth(),
-                )
-
-                HandleAmountAndButton(
-                    currencyViewModel, baseCurrency,
-                    QCAmountAndButtonData(
-                        targetCurrency,
-                        isLoading,
-                        focusManager,
-                        inputFields,
-                        isInitialCompositionCompleted
+                        .fillMaxWidth()
+                        .padding(12.dp),
+                    shape = RoundedCornerShape(12.dp),
+                    onClick = {
+                        focusManager.clearFocus()
+                        bodyMassViewModel.calculateBmi(
+                            heightValue = inputFields.value.heightValue,
+                            weightValue = inputFields.value.weightValue
+                        )
+                    },
+                    colors = ButtonDefaults.buttonColors(
+                        contentColor = Color.Black
                     )
-                )
-                ResultText(response)
+                ) {
+                    Text(
+                        text = context.getString(R.string.qc_button_bmi),
+                        style = MaterialTheme.typography.titleMedium,
+                    )
+                }
+                if (inputFields.value.bmiValue.isNotEmpty()) {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(16.dp)
+                    ) {
+                        Column(
+                            modifier = Modifier.fillMaxWidth()
+                        ) {
+                            Text(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(bottom = 16.dp),
+                                style = MaterialTheme.typography.titleLarge,
+                                text = "Result"
+                            )
+
+                            Column(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(36.dp),
+                                horizontalAlignment = Alignment.CenterHorizontally,
+                                verticalArrangement = Arrangement.Center
+                            ) {
+                                Text(
+                                    modifier = Modifier
+                                        .padding(top = 20.dp),
+                                    style = MaterialTheme.typography.titleLarge,
+                                    text = inputFields.value.bmiValue
+                                )
+
+                                Text(
+                                    modifier = Modifier
+                                        .padding(top = 20.dp),
+                                    style = MaterialTheme.typography.titleLarge,
+                                    text = inputFields.value.typeOfBmi
+                                )
+                            }
+                            Text(
+                                modifier = Modifier
+                                    .padding(top = 8.dp, bottom = 8.dp),
+                                style = MaterialTheme.typography.bodyLarge,
+                                text = "BMI Range"
+                            )
+                            BMIProgressBar(
+                                bmi = inputFields.value.bmiValue.toDoubleOrNull() ?: 0.0,
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                            )
+                        }
+                    }
+                }
             }
         }
     }
