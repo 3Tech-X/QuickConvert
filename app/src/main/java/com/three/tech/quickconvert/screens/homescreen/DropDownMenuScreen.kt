@@ -61,7 +61,6 @@ fun SearchableDropdown(
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { showDialog = true }
             .then(modifier)
     ) {
         Column(
