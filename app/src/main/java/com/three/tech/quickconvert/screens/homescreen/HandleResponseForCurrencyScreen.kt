@@ -40,7 +40,6 @@ fun qCResponse(
     return Pair(currency, errorMessage1)
 }
 
-
 @Composable
 fun HandleLoaderOnClick(isLoading: Boolean) {
     if (isLoading) {
