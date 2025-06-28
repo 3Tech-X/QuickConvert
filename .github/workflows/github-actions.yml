@@ -68,7 +68,7 @@ jobs:
         run: chmod +x ./gradlew
       - name: Assemble Clean Release
         run: |
-          if [[ "${GITHUB_REF_NAME}" == "develop" || "${GITHUB_REF_NAME}" == feature/test/* ]]; then
+          if [[ "${GITHUB_REF_NAME}" == "develop" || "${GITHUB_REF_NAME}" == feature/*/* ]]; then
             ./gradlew clean assembleRelease
             else
             ./gradlew clean bundleRelease
