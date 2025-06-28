@@ -22,4 +22,10 @@
     <string name="qc_bmi_error_weight">कृपया सही वज़न दर्ज करें</string>
     <string name="qc_bmi_error_height">कृपया सही ऊंचाई दर्ज करें</string>
     <string name="qc_bmi_range">बीएमआई सीमा</string>
+
+    <!-- About Page -->
+    <string name="qc_about_feedback_discussion">प्रतिक्रिया और चर्चा</string>
+    <string name="qc_about_privacy_policy">गोपनीयता नीति</string>
+    <string name="qc_about_privacy_policy_button">हमारी Privacy Policy देखने के लिए क्लिक करें</string>
+
 </resources>

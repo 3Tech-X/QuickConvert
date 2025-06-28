@@ -133,7 +133,7 @@ fun FeedbackCard(modifier: Modifier = Modifier) {
     val context = LocalContext.current
     CardView {
         Text(
-            text = "Feedback & Discussion",
+            text = context.getString(R.string.qc_about_feedback_discussion),
             modifier = modifier.padding(10.dp),
             style = MaterialTheme.typography.titleMedium,
         )
@@ -161,7 +161,7 @@ fun PrivacyPolicyCard(modifier: Modifier = Modifier) {
     val context = LocalContext.current
     CardView {
         Text(
-            text = "Privacy Policy",
+            text = context.getString(R.string.qc_about_privacy_policy),
             modifier = modifier.padding(10.dp),
             style = MaterialTheme.typography.titleMedium,
         )
@@ -183,7 +183,7 @@ fun PrivacyPolicyCard(modifier: Modifier = Modifier) {
                     .size(18.dp),
                 contentDescription = "Privacy Policy",
             )
-            Text(text = "Click to View Our Privacy Policy")
+            Text(text = context.getString(R.string.qc_about_privacy_policy_button))
         }
     }
 }

@@ -65,6 +65,22 @@ class ConvertViewModel @Inject constructor(
         }
     }
 
+    fun validateBaseCurrency(baseCurrency: String) {
+        if (baseCurrency.isEmpty()) {
+            _uiState.value = _uiState.value.copy(baseCurrencyError = true)
+        } else {
+            _uiState.value = _uiState.value.copy(baseCurrencyError = false)
+        }
+    }
+
+    fun validateTargetCurrency(targetCurrency: String) {
+        if (targetCurrency.isEmpty()) {
+            _uiState.value = _uiState.value.copy(targetCurrencyError = true)
+        } else {
+            _uiState.value = _uiState.value.copy(targetCurrencyError = false)
+        }
+    }
+
     fun handleButtonClick(checkForInternet: Boolean, baseCurrency: String, targetCurrency: String) {
         validateInputField(_uiState.value.currencyValue)
         if (!_uiState.value.currencyValueError) {

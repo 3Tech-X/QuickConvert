@@ -34,7 +34,9 @@ import com.three.tech.quickconvert.R
 fun SearchableDropdown(
     modifier: Modifier,
     items: List<String>,
-    label: String = "Select Item",
+    label: String,
+    isError: Boolean,
+    onCurrencyValidate: () -> Unit,
     onItemSelected: (String) -> Unit
 ) {
     var selectedText by remember { mutableStateOf("") }
@@ -75,6 +77,7 @@ fun SearchableDropdown(
                     unfocusedIndicatorColor = Color.Transparent,
                     disabledIndicatorColor = Color.Transparent
                 ),
+                isError = isError,
                 label = { Text(label) },
                 trailingIcon = {
                     Icon(
@@ -91,6 +94,7 @@ fun SearchableDropdown(
                         if (!showDialog) {
                             showDialog = true
                         }
+                        onCurrencyValidate()
                         focusManager.clearFocus()
                     }
             )
@@ -105,6 +109,7 @@ fun SearchableDropdown(
             if (showDialog) {
                 AlertDialog(
                     onDismissRequest = {
+                        onCurrencyValidate()
                         showDialog = false
                     },
                     confirmButton = {},
@@ -142,6 +147,7 @@ fun SearchableDropdown(
                                                 onItemSelected(item)
                                                 showDialog = false
                                                 searchQuery = ""
+                                                onCurrencyValidate()
                                             }
                                             .padding(12.dp)
                                     )

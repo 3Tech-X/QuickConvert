@@ -22,4 +22,9 @@
     <string name="qc_bmi_error_weight">ದಯವಿಟ್ಟು ಸರಿಯಾದ ತೂಕವನ್ನು ನಮೂದಿಸಿ</string>
     <string name="qc_bmi_error_height">ದಯವಿಟ್ಟು ಸರಿಯಾದ ಎತ್ತರವನ್ನು ನಮೂದಿಸಿ</string>
     <string name="qc_bmi_range">ಬಿಎಮ್‌ಐ ಶ್ರೇಣಿ</string>
+
+    <!-- About Page -->
+    <string name="qc_about_feedback_discussion">ಪ್ರತಿಕ್ರಿಯೆ ಮತ್ತು ಚರ್ಚೆ</string>
+    <string name="qc_about_privacy_policy">ಗೋಪನೀಯತಾ ನೀತಿ</string>
+    <string name="qc_about_privacy_policy_button">ನಮ್ಮ Privacy Policy ನೋಡಲು ಕ್ಲಿಕ್ ಮಾಡಿ</string>
 </resources>

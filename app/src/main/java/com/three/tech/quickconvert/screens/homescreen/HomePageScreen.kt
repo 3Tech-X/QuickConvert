@@ -178,6 +178,10 @@ fun QCHomePage(onClose: () -> Unit, onNavBarClickedClicked: (NavigationType) -> 
                     modifier = Modifier
                         .padding(horizontal = 8.dp)
                         .fillMaxWidth(),
+                    isError = inputFields.value.baseCurrencyError,
+                    onCurrencyValidate = {
+                        currencyViewModel.validateBaseCurrency(baseCurrency)
+                    }
                 )
 
                 SearchableDropdown(
@@ -186,9 +190,13 @@ fun QCHomePage(onClose: () -> Unit, onNavBarClickedClicked: (NavigationType) -> 
                     onItemSelected = { selectedItem ->
                         targetCurrency = selectedItem
                     },
+                    isError = inputFields.value.targetCurrencyError,
                     modifier = Modifier
                         .padding(horizontal = 8.dp)
                         .fillMaxWidth(),
+                    onCurrencyValidate = {
+                        currencyViewModel.validateTargetCurrency(targetCurrency)
+                    }
                 )
 
                 HandleAmountAndButton(
