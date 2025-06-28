@@ -19,7 +19,8 @@
 
 ## 📱 Screenshots
 
-> *(Screen Shot will be updated soon)*  
+> [App Screenshot]
+> (asset/screenshots.png)
 
 
 ## 📦 Tech Stack
