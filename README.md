@@ -18,7 +18,14 @@
   Designed with user experience in mind — intuitive layout and fast interactions.
 
 ## 📱 Screenshots
-> ![](assets/screenshot.png)
+
+| Light                               | Dark                      |
+|-------------------------------------|---------------------------|
+| ![](assets/qc_home.png)             | ![](assets/qc_home.png)   |
+| ![](assets/bmi_without_input.png)   | ![](assets/qc_home.png)   |
+| ![](assets/bmi_with_input.png)      | ![](assets/qc_home.png)   |
+| ![](assets/qc_with_error_home.png)  | ![](assets/qc_home.png)   |
+| ![](assets/qc_with_error_home.png)  | ![](assets/qc_home.png)   |
 
 
 ## 📦 Tech Stack
