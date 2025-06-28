@@ -67,7 +67,13 @@ jobs:
       - name: Change wrapper permissions
         run: chmod +x ./gradlew
       - name: Assemble Clean Release
-        run: ./gradlew clean assembleRelease
+        run: |
+             echo "Running on branch: $BRANCH_NAME"
+             if [[ "${GITHUB_REF_NAME}" == "develop" || "$BRANCH_NAME" == feature/test/* ]]; then
+               ./gradlew clean assembleRelease
+             else
+               ./gradlew clean bundleRelease
+             fi
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
