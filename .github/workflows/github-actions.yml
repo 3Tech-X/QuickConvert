@@ -78,5 +78,11 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: apk
-          path: app/build/outputs/apk/release/**.apk
+          path: |
+            echo "Running on branch: $BRANCH_NAME"
+            if [[ "${GITHUB_REF_NAME}" == "develop" || "$BRANCH_NAME" == feature/test/* ]]; then
+              app/build/outputs/apk/release/**.apk
+            else
+              app/build/outputs/bundle/**.aab
+            fi
 
