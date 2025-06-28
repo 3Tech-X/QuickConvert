@@ -83,6 +83,6 @@ jobs:
             if [[ "${GITHUB_REF_NAME}" == "develop" || "$BRANCH_NAME" == feature/test/* ]]; then
               app/build/outputs/apk/release/**.apk
             else
-              app/build/outputs/bundle/**.aab
+              app/build/outputs/bundle/release/**.aab
             fi
 
