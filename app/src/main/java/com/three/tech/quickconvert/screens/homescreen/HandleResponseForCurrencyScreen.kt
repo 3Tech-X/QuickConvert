@@ -27,10 +27,12 @@ fun qCResponse(
     response.value?.let { apiResponse ->
         when (apiResponse) {
             is NetworkResult.Success -> {
+                errorMessage1 = null
                 currency = apiResponse.data
             }
 
             is NetworkResult.Error -> {
+                currency = null
                 errorMessage1 = apiResponse.error
             }
         }
