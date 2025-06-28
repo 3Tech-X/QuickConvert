@@ -90,6 +90,9 @@ fun SearchableDropdown(
                 modifier = Modifier
                     .fillMaxWidth()
                     .clickable {
+                        if (!showDialog) {
+                            showDialog = true
+                        }
                         focusManager.clearFocus()
                     }
             )
