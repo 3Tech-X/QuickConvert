@@ -18,8 +18,7 @@
   Designed with user experience in mind — intuitive layout and fast interactions.
 
 ## 📱 Screenshots
-> [App Screenshot]
-> (assets/screenshots.png)
+> (./assets/screenshots.png)
 
 
 ## 📦 Tech Stack
