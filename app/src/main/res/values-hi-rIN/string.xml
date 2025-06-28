@@ -1,4 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="qc_title">त्वरित रूपांतरण</string>
+    <string name="qc_base_currency">मूल मुद्रा</string>
+    <string name="qc_home_title">मुद्रा रूपांतरण</string>
+    <string name="qc_home_description">नीचे विवरण दर्ज करें</string>
+    <string name="qc_convert_to_currency">लक्ष्य मुद्रा</string>
+    <string name="qc_main_title_bmi">बीएमआई कैलकुलेटर</string>
+    <string name="qc_title_bmi">अपना बीएमआई गणना करें</string>
+    <string name="qc_desc_bmi">अपना बॉडी मास इंडेक्स जानने के लिए अपनी ऊंचाई और वजन दर्ज करें।</string>
+    <string name="qc_button_bmi">बीएमआई निकालें</string>
+
+    <!-- Bottom Tab bar Text -->
+    <string name="qc_bottom_bmi">बीएमआई</string>
+    <string name="qc_bottom_convert">बदलें</string>
+    <string name="qc_bottom_about">जानकारी</string>
+
+    <string name="qc_amount_to_convert">कृपया सही राशि दर्ज करें</string>
+
 </resources>

@@ -1,8 +1,20 @@
 <resources>
     <string name="app_name" translatable="false">Quick Convert</string>
     <string name="qc_title">Quick Convert</string>
+    <string name="qc_base_currency">Base Currency</string>
+    <string name="qc_home_title">Currency Conversion</string>
+    <string name="qc_home_description">Enter details below</string>
+    <string name="qc_convert_to_currency">Target Currency</string>
     <string name="qc_main_title_bmi">BMI Calculator</string>
     <string name="qc_title_bmi">Calculate Your BMI</string>
     <string name="qc_desc_bmi">Enter your height and weight to find out your Body Mass Index.</string>
     <string name="qc_button_bmi">Calculate BMI</string>
+
+    <!-- Bottom Tab bar Text -->
+    <string name="qc_bottom_bmi">BMI</string>
+    <string name="qc_bottom_convert">Convert</string>
+    <string name="qc_bottom_about">About</string>
+
+
+    <string name="qc_amount_to_convert">Amount to convert</string>
 </resources>

@@ -29,6 +29,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import com.three.tech.quickconvert.R
 import com.three.tech.quickconvert.networking.util.NetworkUtil
 import com.three.tech.quickconvert.viewmodel.ConvertViewModel
 import com.three.tech.quickconvert.viewmodel.QCHomePageData
@@ -45,7 +46,7 @@ fun HandleAmountAndButton(
         Column {
             TextField(
                 value = inputFields.value.currencyValue,
-                label = { Text("Amount to convert") },
+                label = { Text(context.getString(R.string.qc_amount_to_convert)) },
                 onValueChange = { currencyViewModel.onValueChange(it) },
                 shape = RoundedCornerShape(12.dp),
                 modifier = Modifier
@@ -73,7 +74,7 @@ fun HandleAmountAndButton(
 
             if (inputFields.value.currencyValueError && !isAmountFieldFocused) {
                 Text(
-                    text = "Please enter a valid amount",
+                    text = context.getString(R.string.qc_amount_to_convert),
                     color = MaterialTheme.colorScheme.error,
                     style = MaterialTheme.typography.bodySmall,
                     modifier = Modifier.padding(start = 16.dp, top = 4.dp)

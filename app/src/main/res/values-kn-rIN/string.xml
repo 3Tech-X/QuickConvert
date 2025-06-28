@@ -1,4 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="qc_title">ತಕ್ಷಣ ಬದಲಾವಣೆ</string>
+    <string name="qc_base_currency">ಮೂಲ ಕರೆನ್ಸಿ</string>
+    <string name="qc_home_title">ಕರೆನ್ಸಿ ಪರಿವರ್ತನೆ</string>
+    <string name="qc_home_description">ಕೆಳಗಿನ ವಿವರಗಳನ್ನು ನಮೂದಿಸಿ</string>
+    <string name="qc_convert_to_currency">ಗುರಿ ಕರೆನ್ಸಿ</string>
+    <string name="qc_main_title_bmi">ಬಿಎಮ್‌ಐ ಕ್ಯಾಲ್ಕುಲೇಟರ್</string>
+    <string name="qc_title_bmi">ನಿಮ್ಮ ಬಿಎಮ್‌ಐ ಲೆಕ್ಕಹಾಕಿ</string>
+    <string name="qc_desc_bmi">ನಿಮ್ಮ ದೇಹ ಭಾರದ ಸೂಚ್ಯಾಂಕವನ್ನು ಕಂಡುಹಿಡಿಯಲು ನಿಮ್ಮ ಎತ್ತರ ಮತ್ತು ತೂಕವನ್ನು ನಮೂದಿಸಿ.</string>
+    <string name="qc_button_bmi">ಬಿಎಮ್‌ಐ ಪರಿಶೀಲಿಸಿI</string>
+
+    <!-- Bottom Tab bar Text -->
+    <string name="qc_bottom_bmi">ಬಿಎಮ್‌ಐ</string>
+    <string name="qc_bottom_convert">ಬದಲಾಯಿಸಿ</string>
+    <string name="qc_bottom_about">ಮಾಹಿತಿ</string>
+
+    <string name="qc_amount_to_convert">ದಯವಿಟ್ಟು ಮಾನ್ಯವಾದ ಮೊತ್ತವನ್ನು ನಮೂದಿಸಿ</string>
 </resources>

@@ -94,7 +94,7 @@ fun QCHomePage(onClose: () -> Unit, onNavBarClickedClicked: (NavigationType) -> 
                     ) {
                         Image(
                             painter = rememberVectorPainter(image = Icons.Outlined.Cancel),
-                            contentDescription = "Quick Convert Logo",
+                            contentDescription = context.getString(R.string.qc_back_button),
                             modifier = Modifier
                                 .fillMaxSize()
                                 .size(32.dp),
@@ -151,17 +151,17 @@ fun QCHomePage(onClose: () -> Unit, onNavBarClickedClicked: (NavigationType) -> 
                                 .fillMaxWidth(),
                             painter = painterResource(id = R.drawable.qc_home_image),
                             contentScale = ContentScale.FillWidth,
-                            contentDescription = "Quick Convert Logo"
+                            contentDescription = context.getString(R.string.qc_home_image)
                         )
                         Text(
-                            text = "Currency Conversion",
+                            text = context.getString(R.string.qc_home_title),
                             modifier = Modifier.padding(16.dp),
                             color = Color.Black,
                             style = MaterialTheme.typography.headlineMedium
                         )
 
                         Text(
-                            text = "Enter details below",
+                            text = context.getString(R.string.qc_home_description),
                             modifier = Modifier.padding(16.dp),
                             color = Color.Black,
                             style = MaterialTheme.typography.bodyMedium
@@ -171,7 +171,7 @@ fun QCHomePage(onClose: () -> Unit, onNavBarClickedClicked: (NavigationType) -> 
                 }
                 SearchableDropdown(
                     items = getAllCurrencyCodes(),
-                    label = "Base Currency",
+                    label = context.getString(R.string.qc_base_currency),
                     onItemSelected = { selectedItem ->
                         baseCurrency = selectedItem
                     },
@@ -182,7 +182,7 @@ fun QCHomePage(onClose: () -> Unit, onNavBarClickedClicked: (NavigationType) -> 
 
                 SearchableDropdown(
                     items = getAllCurrencyCodes(),
-                    label = "Convert to Currency",
+                    label = context.getString(R.string.qc_convert_to_currency),
                     onItemSelected = { selectedItem ->
                         targetCurrency = selectedItem
                     },
