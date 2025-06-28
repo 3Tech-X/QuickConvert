@@ -195,8 +195,7 @@ fun AndroidCard(modifier: Modifier = Modifier) {
         Text(
             text = "Android",
             modifier = Modifier.padding(12.dp),
-            style = MaterialTheme.typography.titleMedium,
-            color = MaterialTheme.colorScheme.primary,
+            style = MaterialTheme.typography.titleMedium
         )
         Row(
             modifier = modifier
