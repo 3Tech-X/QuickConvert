@@ -133,3 +133,4 @@ data class QCAmountAndButtonData(
     val inputFields: State<QCHomePageData>,
     val isInitialCompositionCompleted: Boolean
 )
+
