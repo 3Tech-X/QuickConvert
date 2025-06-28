@@ -201,7 +201,7 @@ fun QCHomePage(onClose: () -> Unit, onNavBarClickedClicked: (NavigationType) -> 
                         isInitialCompositionCompleted
                     )
                 )
-                ResultText(response)
+                ResultSuccessAndFailureView(response)
             }
         }
     }

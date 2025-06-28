@@ -3,6 +3,7 @@ package com.three.tech.quickconvert.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.three.tech.quickconvert.ConverterService
+import com.three.tech.quickconvert.networking.dataclass.NetworkError
 import com.three.tech.quickconvert.networking.util.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -31,16 +32,23 @@ class ConvertViewModel @Inject constructor(
     private fun getCalculatedCurrencyValue(
         baseCurrency: String,
         targetCurrency: String,
-        amount: String
+        amount: String,
+        checkForInternet: Boolean
     ) {
-        viewModelScope.launch {
-            _isLoading.value = true
-            _networkResult.value = service.getCurrencyValue(
-                baseCurrency,
-                targetCurrency,
-                amount.toFloat()
+        if (checkForInternet) {
+            viewModelScope.launch {
+                _isLoading.value = true
+                _networkResult.value = service.getCurrencyValue(
+                    baseCurrency,
+                    targetCurrency,
+                    amount.toFloat()
+                )
+                _isLoading.value = false
+            }
+        } else {
+            _networkResult.value = NetworkResult.Error(
+                NetworkError.NO_INTERNET
             )
-            _isLoading.value = false
         }
     }
 
@@ -59,11 +67,12 @@ class ConvertViewModel @Inject constructor(
 
     fun handleButtonClick(checkForInternet: Boolean, baseCurrency: String, targetCurrency: String) {
         validateInputField(_uiState.value.currencyValue)
-        if (!_uiState.value.currencyValueError && checkForInternet) {
+        if (!_uiState.value.currencyValueError) {
             getCalculatedCurrencyValue(
                 baseCurrency = baseCurrency,
                 targetCurrency = targetCurrency,
-                amount = _uiState.value.currencyValue
+                amount = _uiState.value.currencyValue,
+                checkForInternet
             )
         }
 

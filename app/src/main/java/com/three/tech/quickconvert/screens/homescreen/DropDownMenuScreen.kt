@@ -61,7 +61,6 @@ fun SearchableDropdown(
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { showDialog = true }
             .then(modifier)
     ) {
         Column(
@@ -69,8 +68,7 @@ fun SearchableDropdown(
         ) {
             TextField(
                 value = selectedText,
-                onValueChange = {
-                },
+                onValueChange = { },
                 shape = RoundedCornerShape(12.dp),
                 colors = TextFieldDefaults.colors(
                     focusedIndicatorColor = Color.Transparent,
@@ -90,6 +88,9 @@ fun SearchableDropdown(
                 modifier = Modifier
                     .fillMaxWidth()
                     .clickable {
+                        if (!showDialog) {
+                            showDialog = true
+                        }
                         focusManager.clearFocus()
                     }
             )

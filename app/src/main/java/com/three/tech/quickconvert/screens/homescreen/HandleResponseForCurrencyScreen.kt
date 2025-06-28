@@ -21,23 +21,23 @@ import com.three.tech.quickconvert.networking.util.NetworkResult
 fun qCResponse(
     response: State<NetworkResult?>,
     errorMessage: NetworkError?,
-): Triple<Currency?, NetworkError?, String?> {
+): Pair<Currency?, NetworkError?> {
     var currency by remember { mutableStateOf<Currency?>(null) }
-    var noInternetMessage by remember { mutableStateOf<String?>(null) }
     var errorMessage1 = errorMessage
     response.value?.let { apiResponse ->
         when (apiResponse) {
             is NetworkResult.Success -> {
+                errorMessage1 = null
                 currency = apiResponse.data
-                noInternetMessage = null
             }
 
             is NetworkResult.Error -> {
+                currency = null
                 errorMessage1 = apiResponse.error
             }
         }
     }
-    return Triple(currency, errorMessage1, noInternetMessage)
+    return Pair(currency, errorMessage1)
 }
 
 @Composable
