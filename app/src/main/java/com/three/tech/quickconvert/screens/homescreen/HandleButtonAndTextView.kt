@@ -74,7 +74,7 @@ fun HandleAmountAndButton(
 
             if (inputFields.value.currencyValueError && !isAmountFieldFocused) {
                 Text(
-                    text = context.getString(R.string.qc_amount_to_convert),
+                    text = context.getString(R.string.qc_amount_error),
                     color = MaterialTheme.colorScheme.error,
                     style = MaterialTheme.typography.bodySmall,
                     modifier = Modifier.padding(start = 16.dp, top = 4.dp)

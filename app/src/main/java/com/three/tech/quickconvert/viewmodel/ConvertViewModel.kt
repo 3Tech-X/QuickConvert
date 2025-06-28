@@ -83,7 +83,9 @@ class ConvertViewModel @Inject constructor(
 
     fun handleButtonClick(checkForInternet: Boolean, baseCurrency: String, targetCurrency: String) {
         validateInputField(_uiState.value.currencyValue)
-        if (!_uiState.value.currencyValueError) {
+        validateBaseCurrency(baseCurrency)
+        validateTargetCurrency(targetCurrency)
+        if (!_uiState.value.currencyValueError && !_uiState.value.baseCurrencyError && !_uiState.value.targetCurrencyError) {
             getCalculatedCurrencyValue(
                 baseCurrency = baseCurrency,
                 targetCurrency = targetCurrency,

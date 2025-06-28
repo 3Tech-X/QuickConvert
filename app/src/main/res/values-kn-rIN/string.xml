@@ -15,7 +15,8 @@
     <string name="qc_bottom_convert">ಬದಲಾಯಿಸಿ</string>
     <string name="qc_bottom_about">ಮಾಹಿತಿ</string>
 
-    <string name="qc_amount_to_convert">ದಯವಿಟ್ಟು ಮಾನ್ಯವಾದ ಮೊತ್ತವನ್ನು ನಮೂದಿಸಿ</string>
+    <string name="qc_amount_to_convert">ಪರಿವರ್ತಿಸಲು ಮೊತ್ತಿ</string>
+    <string name="qc_amount_error">ದಯವಿಟ್ಟು ಸರಿಯಾದ ಮೊತ್ತವನ್ನು ನಮೂದಿಸಿ</string>
     <string name="qc_bmi_result">ಫಲಿತಾಂಶ</string>
     <string name="qc_bmi_height">ಎತ್ತರ (ಸೆಂ.ಮೀ)</string>
     <string name="qc_bmi_weight">ತೂಕ (ಕೆಜಿ)</string>

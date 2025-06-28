@@ -15,7 +15,8 @@
     <string name="qc_bottom_convert">बदलें</string>
     <string name="qc_bottom_about">जानकारी</string>
 
-    <string name="qc_amount_to_convert">कृपया सही राशि दर्ज करें</string>
+    <string name="qc_amount_to_convert">परिवर्तित करने की राशि</string>
+    <string name="qc_amount_error">कृपया सही राशि दर्ज करें</string>
     <string name="qc_bmi_result">परिणाम</string>
     <string name="qc_bmi_height">ऊंचाई (सेमी)</string>
     <string name="qc_bmi_weight">वज़न (किग्रा)</string>
