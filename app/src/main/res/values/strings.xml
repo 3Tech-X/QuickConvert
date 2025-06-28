@@ -17,4 +17,10 @@
 
 
     <string name="qc_amount_to_convert">Amount to convert</string>
+    <string name="qc_bmi_result">Result</string>
+    <string name="qc_bmi_height">Height (cm)</string>
+    <string name="qc_bmi_weight">Weight (kg)</string>
+    <string name="qc_bmi_error_weight">Please enter a valid weight</string>
+    <string name="qc_bmi_error_height">Please enter a valid height</string>
+    <string name="qc_bmi_range">BMI Range</string>
 </resources>

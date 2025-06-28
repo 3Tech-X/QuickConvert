@@ -16,5 +16,10 @@
     <string name="qc_bottom_about">जानकारी</string>
 
     <string name="qc_amount_to_convert">कृपया सही राशि दर्ज करें</string>
-
+    <string name="qc_bmi_result">परिणाम</string>
+    <string name="qc_bmi_height">ऊंचाई (सेमी)</string>
+    <string name="qc_bmi_weight">वज़न (किग्रा)</string>
+    <string name="qc_bmi_error_weight">कृपया सही वज़न दर्ज करें</string>
+    <string name="qc_bmi_error_height">कृपया सही ऊंचाई दर्ज करें</string>
+    <string name="qc_bmi_range">बीएमआई सीमा</string>
 </resources>

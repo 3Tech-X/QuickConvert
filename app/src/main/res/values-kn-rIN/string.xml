@@ -16,4 +16,10 @@
     <string name="qc_bottom_about">ಮಾಹಿತಿ</string>
 
     <string name="qc_amount_to_convert">ದಯವಿಟ್ಟು ಮಾನ್ಯವಾದ ಮೊತ್ತವನ್ನು ನಮೂದಿಸಿ</string>
+    <string name="qc_bmi_result">ಫಲಿತಾಂಶ</string>
+    <string name="qc_bmi_height">ಎತ್ತರ (ಸೆಂ.ಮೀ)</string>
+    <string name="qc_bmi_weight">ತೂಕ (ಕೆಜಿ)</string>
+    <string name="qc_bmi_error_weight">ದಯವಿಟ್ಟು ಸರಿಯಾದ ತೂಕವನ್ನು ನಮೂದಿಸಿ</string>
+    <string name="qc_bmi_error_height">ದಯವಿಟ್ಟು ಸರಿಯಾದ ಎತ್ತರವನ್ನು ನಮೂದಿಸಿ</string>
+    <string name="qc_bmi_range">ಬಿಎಮ್‌ಐ ಶ್ರೇಣಿ</string>
 </resources>
