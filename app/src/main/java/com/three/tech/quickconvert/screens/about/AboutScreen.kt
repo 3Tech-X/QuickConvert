@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.CheckCircle
 import androidx.compose.material.icons.outlined.Code
 import androidx.compose.material.icons.outlined.Language
 import androidx.compose.material.icons.outlined.PrivacyTip
@@ -203,22 +202,6 @@ fun AndroidCard(modifier: Modifier = Modifier) {
                 .padding(12.dp),
             horizontalArrangement = Arrangement.SpaceBetween,
         ) {
-            Button(
-                onClick = { "https://staticvar.dev".openAsCustomTab(context) },
-                modifier = modifier
-                    .weight(1f)
-                    .padding(12.dp),
-                shape = RoundedCornerShape(12.dp),
-            ) {
-                Icon(
-                    imageVector = Icons.Outlined.CheckCircle,
-                    modifier = modifier
-                        .padding(12.dp)
-                        .size(18.dp),
-                    contentDescription = "Test",
-                )
-                Text(text = "staticvar.dev", overflow = TextOverflow.Ellipsis, maxLines = 1)
-            }
             Button(
                 onClick = { "https://github.com/Shreyas280598".openAsCustomTab(context) },
                 modifier = modifier

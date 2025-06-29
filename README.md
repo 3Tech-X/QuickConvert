@@ -19,13 +19,13 @@
 
 ## 📱 Preview
 
-| Light                               | Dark                      |
-|-------------------------------------|---------------------------|
-| ![](assets/qc_home.png)             | ![](assets/qc_home.png)   |
-| ![](assets/bmi_without_input.png)   | ![](assets/qc_home.png)   |
-| ![](assets/bmi_with_input.png)      | ![](assets/qc_home.png)   |
-| ![](assets/qc_with_error_home.png)  | ![](assets/qc_home.png)   |
-| ![](assets/qc_with_error_home.png)  | ![](assets/qc_home.png)   |
+| Light                             | Dark                      |
+|-----------------------------------|---------------------------|
+| ![](assets/qc_home.png)           | ![](assets/qc_home.png)   |
+| ![](assets/bmi_without_input.png) | ![](assets/qc_home.png)   |
+| ![](assets/bmi_with_input.png)    | ![](assets/qc_home.png)   |
+| ![](assets/qc_with_error.png)     | ![](assets/qc_home.png)   |
+| ![](assets/qc_about_screen.png)   | ![](assets/qc_home.png)   |
 
 
 ## 📦 Tech Stack
