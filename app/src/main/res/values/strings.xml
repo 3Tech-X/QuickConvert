@@ -24,6 +24,9 @@
     <string name="qc_bmi_error_weight">Please enter a valid weight</string>
     <string name="qc_bmi_error_height">Please enter  valid height</string>
     <string name="qc_bmi_range">BMI Range</string>
+    <string name="qc_search_and_select">Search &amp; Select</string>
+    <string name="qc_search_text">Search</string>
+    <string name="qc_no_result_found">No results found</string>
 
     <!-- About Page -->
     <string name="qc_about_feedback_discussion">Feedback &amp; Discussion</string>

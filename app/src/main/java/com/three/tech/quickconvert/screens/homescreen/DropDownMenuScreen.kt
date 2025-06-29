@@ -1,5 +1,6 @@
 package com.three.tech.quickconvert.screens.homescreen
 
+import android.content.Context
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
@@ -25,6 +26,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
@@ -43,6 +45,7 @@ fun SearchableDropdown(
     var showDialog by remember { mutableStateOf(false) }
     var searchQuery by remember { mutableStateOf("") }
     val interactionSource = remember { MutableInteractionSource() }
+    val context = LocalContext.current
     val isPressed by interactionSource.collectIsPressedAsState()
     val focusManager = LocalFocusManager.current
 
@@ -113,14 +116,14 @@ fun SearchableDropdown(
                         showDialog = false
                     },
                     confirmButton = {},
-                    title = { Text("Search & Select") },
+                    title = { Text(context.getString(R.string.qc_search_and_select)) },
                     text = {
                         Column {
                             TextField(
                                 value = searchQuery,
                                 onValueChange = { searchQuery = it },
                                 shape = RoundedCornerShape(12.dp),
-                                label = { Text("Search") },
+                                label = { Text(context.getString(R.string.qc_search_text)) },
                                 colors = TextFieldDefaults.colors(
                                     focusedIndicatorColor = Color.Transparent,
                                     unfocusedIndicatorColor = Color.Transparent,
@@ -152,7 +155,7 @@ fun SearchableDropdown(
                                             .padding(12.dp)
                                     )
                                 }
-                                noResultText(filteredItems)
+                                noResultText(filteredItems, context)
                             }
                         }
                     }
@@ -162,11 +165,11 @@ fun SearchableDropdown(
     }
 }
 
-private fun LazyListScope.noResultText(filteredItems: List<String>) {
+private fun LazyListScope.noResultText(filteredItems: List<String>, context: Context) {
     if (filteredItems.isEmpty()) {
         item {
             Text(
-                "No results found",
+                context.getString(R.string.qc_no_result_found),
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(16.dp),
