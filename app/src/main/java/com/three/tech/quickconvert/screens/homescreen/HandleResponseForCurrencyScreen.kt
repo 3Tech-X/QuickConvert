@@ -12,7 +12,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import com.three.tech.quickconvert.R
 import com.three.tech.quickconvert.networking.dataclass.Currency
 import com.three.tech.quickconvert.networking.dataclass.NetworkError
 import com.three.tech.quickconvert.networking.util.NetworkResult
@@ -21,27 +23,28 @@ import com.three.tech.quickconvert.networking.util.NetworkResult
 fun qCResponse(
     response: State<NetworkResult?>,
     errorMessage: NetworkError?,
-): Triple<Currency?, NetworkError?, String?> {
+): Pair<Currency?, NetworkError?> {
     var currency by remember { mutableStateOf<Currency?>(null) }
-    var noInternetMessage by remember { mutableStateOf<String?>(null) }
     var errorMessage1 = errorMessage
     response.value?.let { apiResponse ->
         when (apiResponse) {
             is NetworkResult.Success -> {
+                errorMessage1 = null
                 currency = apiResponse.data
-                noInternetMessage = null
             }
 
             is NetworkResult.Error -> {
+                currency = null
                 errorMessage1 = apiResponse.error
             }
         }
     }
-    return Triple(currency, errorMessage1, noInternetMessage)
+    return Pair(currency, errorMessage1)
 }
 
 @Composable
 fun HandleLoaderOnClick(isLoading: Boolean) {
+    val context = LocalContext.current
     if (isLoading) {
         CircularProgressIndicator(
             modifier = Modifier
@@ -51,7 +54,7 @@ fun HandleLoaderOnClick(isLoading: Boolean) {
         )
     } else {
         Text(
-            text = "Convert",
+            text = context.getString(R.string.qc_bottom_convert),
             style = MaterialTheme.typography.titleMedium,
         )
     }

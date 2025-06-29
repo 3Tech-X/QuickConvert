@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.CheckCircle
 import androidx.compose.material.icons.outlined.Code
 import androidx.compose.material.icons.outlined.Language
 import androidx.compose.material.icons.outlined.PrivacyTip
@@ -133,7 +132,7 @@ fun FeedbackCard(modifier: Modifier = Modifier) {
     val context = LocalContext.current
     CardView {
         Text(
-            text = "Feedback & Discussion",
+            text = context.getString(R.string.qc_about_feedback_discussion),
             modifier = modifier.padding(10.dp),
             style = MaterialTheme.typography.titleMedium,
         )
@@ -161,7 +160,7 @@ fun PrivacyPolicyCard(modifier: Modifier = Modifier) {
     val context = LocalContext.current
     CardView {
         Text(
-            text = "Privacy Policy",
+            text = context.getString(R.string.qc_about_privacy_policy),
             modifier = modifier.padding(10.dp),
             style = MaterialTheme.typography.titleMedium,
         )
@@ -183,7 +182,7 @@ fun PrivacyPolicyCard(modifier: Modifier = Modifier) {
                     .size(18.dp),
                 contentDescription = "Privacy Policy",
             )
-            Text(text = "Click to View Our Privacy Policy")
+            Text(text = context.getString(R.string.qc_about_privacy_policy_button))
         }
     }
 }
@@ -195,8 +194,7 @@ fun AndroidCard(modifier: Modifier = Modifier) {
         Text(
             text = "Android",
             modifier = Modifier.padding(12.dp),
-            style = MaterialTheme.typography.titleMedium,
-            color = MaterialTheme.colorScheme.primary,
+            style = MaterialTheme.typography.titleMedium
         )
         Row(
             modifier = modifier
@@ -204,22 +202,6 @@ fun AndroidCard(modifier: Modifier = Modifier) {
                 .padding(12.dp),
             horizontalArrangement = Arrangement.SpaceBetween,
         ) {
-            Button(
-                onClick = { "https://staticvar.dev".openAsCustomTab(context) },
-                modifier = modifier
-                    .weight(1f)
-                    .padding(12.dp),
-                shape = RoundedCornerShape(12.dp),
-            ) {
-                Icon(
-                    imageVector = Icons.Outlined.CheckCircle,
-                    modifier = modifier
-                        .padding(12.dp)
-                        .size(18.dp),
-                    contentDescription = "Test",
-                )
-                Text(text = "staticvar.dev", overflow = TextOverflow.Ellipsis, maxLines = 1)
-            }
             Button(
                 onClick = { "https://github.com/Shreyas280598".openAsCustomTab(context) },
                 modifier = modifier
