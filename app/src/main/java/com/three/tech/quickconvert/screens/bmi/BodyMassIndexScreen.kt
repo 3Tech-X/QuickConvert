@@ -87,7 +87,7 @@ fun BMICalculatorScreen(onBackPress: () -> Unit, onNavBarClickedClicked: (Naviga
                     ) {
                         Image(
                             painter = painterResource(id = R.drawable.back_arrow),
-                            contentDescription = "Quick Convert Logo",
+                            contentDescription = "",
                             modifier = Modifier
                                 .fillMaxSize(),
                             colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onBackground)
@@ -201,7 +201,7 @@ fun BMICalculatorScreen(onBackPress: () -> Unit, onNavBarClickedClicked: (Naviga
                                     .fillMaxWidth()
                                     .padding(bottom = 16.dp),
                                 style = MaterialTheme.typography.titleLarge,
-                                text = "Result"
+                                text = context.getString(R.string.qc_bmi_result)
                             )
 
                             Column(
@@ -229,7 +229,7 @@ fun BMICalculatorScreen(onBackPress: () -> Unit, onNavBarClickedClicked: (Naviga
                                 modifier = Modifier
                                     .padding(top = 8.dp, bottom = 8.dp),
                                 style = MaterialTheme.typography.bodyLarge,
-                                text = "BMI Range"
+                                text = context.getString(R.string.qc_bmi_range)
                             )
                             BMIProgressBar(
                                 bmi = inputFields.value.bmiValue.toDoubleOrNull() ?: 0.0,

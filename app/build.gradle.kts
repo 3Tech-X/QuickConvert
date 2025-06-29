@@ -68,6 +68,7 @@ dependencies {
     implementation(libs.androidx.ui)
     implementation(libs.androidx.browser)
     implementation(libs.androidx.material)
+    implementation (libs.androidx.foundation)
 
     //Splash Screen Dependencies
     implementation(libs.splashscreen)

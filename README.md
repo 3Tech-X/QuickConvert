@@ -17,9 +17,15 @@
 - 🎯 **Clean and Modern UI**  
   Designed with user experience in mind — intuitive layout and fast interactions.
 
-## 📱 Screenshots
+## 📱 Preview
 
-> *(Screen Shot will be updated soon)*  
+| Light                             | Dark                                   |
+|-----------------------------------|----------------------------------------|
+| ![](assets/qc_home.png)           | ![](assets/qc_home_dark.png)           |
+| ![](assets/bmi_without_input.png) | ![](assets/bmi_without_input_dark.png) |
+| ![](assets/bmi_with_input.png)    | ![](assets/bmi_with_input_dark.png)    |
+| ![](assets/qc_with_error.png)     | ![](assets/qc_with_error_dark.png)     |
+| ![](assets/qc_about_screen.png)   | ![](assets/qc_about_screen_dark.png)   |
 
 
 ## 📦 Tech Stack

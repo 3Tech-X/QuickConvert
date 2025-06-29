@@ -1,4 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="qc_title">त्वरित रूपांतरण</string>
+    <string name="qc_base_currency">मूल मुद्रा</string>
+    <string name="qc_home_title">मुद्रा रूपांतरण</string>
+    <string name="qc_home_description">नीचे विवरण दर्ज करें</string>
+    <string name="qc_convert_to_currency">लक्ष्य मुद्रा</string>
+    <string name="qc_main_title_bmi">बीएमआई कैलकुलेटर</string>
+    <string name="qc_title_bmi">अपना बीएमआई गणना करें</string>
+    <string name="qc_desc_bmi">अपना बॉडी मास इंडेक्स जानने के लिए अपनी ऊंचाई और वजन दर्ज करें।</string>
+    <string name="qc_button_bmi">बीएमआई निकालें</string>
+
+    <!-- Bottom Tab bar Text -->
+    <string name="qc_bottom_bmi">बीएमआई</string>
+    <string name="qc_bottom_convert">बदलें</string>
+    <string name="qc_bottom_about">जानकारी</string>
+
+    <string name="qc_amount_to_convert">परिवर्तित करने की राशि</string>
+    <string name="qc_amount_error">कृपया सही राशि दर्ज करें</string>
+    <string name="qc_bmi_result">परिणाम</string>
+    <string name="qc_bmi_height">ऊंचाई (सेमी)</string>
+    <string name="qc_bmi_weight">वज़न (किग्रा)</string>
+    <string name="qc_bmi_error_weight">कृपया सही वज़न दर्ज करें</string>
+    <string name="qc_bmi_error_height">कृपया सही ऊंचाई दर्ज करें</string>
+    <string name="qc_bmi_range">बीएमआई सीमा</string>
+    <string name="qc_search_and_select">करेंसी खोजें और चुनें</string>
+    <string name="qc_search_text">ढूंढें</string>
+    <string name="qc_no_result_found">कोई परिणाम नहीं मिला</string>
+
+    <!-- Error Screen -->
+    <string name="qc_error_title_no_internet">कोई इंटरनेट कनेक्शन नहीं है</string>
+    <string name="qc_error_title">रूपांतरण विफल — ऐसा नहीं होना चाहिए था</string>
+    <string name="qc_error_description">कृपया अपना नेटवर्क कनेक्शन जांचें या बाद में पुनः प्रयास करें</string>
+    <string name="qc_error_description_no_internet">कृपया अपना इंटरनेट कनेक्शन सक्षम करें।\nजब आप दोबारा ऑनलाइन होंगे, हम तैयार रहेंगे।</string>
+
+    <!-- About Page -->
+    <string name="qc_about_feedback_discussion">प्रतिक्रिया और चर्चा</string>
+    <string name="qc_about_privacy_policy">गोपनीयता नीति</string>
+    <string name="qc_about_privacy_policy_button">हमारी Privacy Policy देखने के लिए क्लिक करें</string>
+
 </resources>

@@ -1,8 +1,41 @@
 <resources>
     <string name="app_name" translatable="false">Quick Convert</string>
     <string name="qc_title">Quick Convert</string>
+    <string name="qc_base_currency">Base Currency</string>
+    <string name="qc_home_title">Currency Conversion</string>
+    <string name="qc_home_description">Enter details below</string>
+    <string name="qc_convert_to_currency">Target Currency</string>
     <string name="qc_main_title_bmi">BMI Calculator</string>
     <string name="qc_title_bmi">Calculate Your BMI</string>
     <string name="qc_desc_bmi">Enter your height and weight to find out your Body Mass Index.</string>
     <string name="qc_button_bmi">Calculate BMI</string>
+
+    <!-- Bottom Tab bar Text -->
+    <string name="qc_bottom_bmi">BMI</string>
+    <string name="qc_bottom_convert">Convert</string>
+    <string name="qc_bottom_about">About</string>
+
+
+    <string name="qc_amount_to_convert">Amount to convert</string>
+    <string name="qc_amount_error">Please enter a valid amount</string>
+    <string name="qc_bmi_result">Result</string>
+    <string name="qc_bmi_height">Height (cm)</string>
+    <string name="qc_bmi_weight">Weight (kg)</string>
+    <string name="qc_bmi_error_weight">Please enter a valid weight</string>
+    <string name="qc_bmi_error_height">Please enter  valid height</string>
+    <string name="qc_bmi_range">BMI Range</string>
+    <string name="qc_search_and_select">Search &amp; Select</string>
+    <string name="qc_search_text">Search</string>
+    <string name="qc_no_result_found">No results found</string>
+
+    <!-- Error Screen -->
+    <string name="qc_error_title_no_internet">No Internet Connection</string>
+    <string name="qc_error_description_no_internet">Please enable your internet connection. \nWe’ll be ready when you\'re back online.</string>
+    <string name="qc_error_title">Conversion Failed — this shouldn’t have happened</string>
+    <string name="qc_error_description">Please check your network connection or try again later</string>
+
+    <!-- About Page -->
+    <string name="qc_about_feedback_discussion">Feedback &amp; Discussion</string>
+    <string name="qc_about_privacy_policy">Privacy Policy</string>
+    <string name="qc_about_privacy_policy_button">Click to View Our Privacy Policy</string>
 </resources>

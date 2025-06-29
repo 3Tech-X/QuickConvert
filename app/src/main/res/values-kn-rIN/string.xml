@@ -1,4 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="qc_title">ತಕ್ಷಣ ಬದಲಾವಣೆ</string>
+    <string name="qc_base_currency">ಮೂಲ ಕರೆನ್ಸಿ</string>
+    <string name="qc_home_title">ಕರೆನ್ಸಿ ಪರಿವರ್ತನೆ</string>
+    <string name="qc_home_description">ಕೆಳಗಿನ ವಿವರಗಳನ್ನು ನಮೂದಿಸಿ</string>
+    <string name="qc_convert_to_currency">ಗುರಿ ಕರೆನ್ಸಿ</string>
+    <string name="qc_main_title_bmi">ಬಿಎಮ್‌ಐ ಕ್ಯಾಲ್ಕುಲೇಟರ್</string>
+    <string name="qc_title_bmi">ನಿಮ್ಮ ಬಿಎಮ್‌ಐ ಲೆಕ್ಕಹಾಕಿ</string>
+    <string name="qc_desc_bmi">ನಿಮ್ಮ ದೇಹ ಭಾರದ ಸೂಚ್ಯಾಂಕವನ್ನು ಕಂಡುಹಿಡಿಯಲು ನಿಮ್ಮ ಎತ್ತರ ಮತ್ತು ತೂಕವನ್ನು ನಮೂದಿಸಿ.</string>
+    <string name="qc_button_bmi">ಬಿಎಮ್‌ಐ ಪರಿಶೀಲಿಸಿI</string>
+
+    <!-- Bottom Tab bar Text -->
+    <string name="qc_bottom_bmi">ಬಿಎಮ್‌ಐ</string>
+    <string name="qc_bottom_convert">ಬದಲಾಯಿಸಿ</string>
+    <string name="qc_bottom_about">ಮಾಹಿತಿ</string>
+
+    <string name="qc_amount_to_convert">ಪರಿವರ್ತಿಸಲು ಮೊತ್ತಿ</string>
+    <string name="qc_amount_error">ದಯವಿಟ್ಟು ಸರಿಯಾದ ಮೊತ್ತವನ್ನು ನಮೂದಿಸಿ</string>
+    <string name="qc_bmi_result">ಫಲಿತಾಂಶ</string>
+    <string name="qc_bmi_height">ಎತ್ತರ (ಸೆಂ.ಮೀ)</string>
+    <string name="qc_bmi_weight">ತೂಕ (ಕೆಜಿ)</string>
+    <string name="qc_bmi_error_weight">ದಯವಿಟ್ಟು ಸರಿಯಾದ ತೂಕವನ್ನು ನಮೂದಿಸಿ</string>
+    <string name="qc_bmi_error_height">ದಯವಿಟ್ಟು ಸರಿಯಾದ ಎತ್ತರವನ್ನು ನಮೂದಿಸಿ</string>
+    <string name="qc_bmi_range">ಬಿಎಮ್‌ಐ ಶ್ರೇಣಿ</string>
+    <string name="qc_search_and_select">ಹುಡುಕಿ ಆಯ್ಕೆಮಾಡಿ</string>
+    <string name="qc_search_text">ಹುಡುಕಿ</string>
+    <string name="qc_no_result_found">ಯಾವುದೇ ಫಲಿತಾಂಶ ದೊರಕಲಿಲ್ಲ</string>
+
+    <!-- Error Screen -->
+    <string name="qc_error_title_no_internet">ಇಂಟರ್ನೆಟ್ ಸಂಪರ್ಕ ಇಲ್ಲ</string>
+    <string name="qc_error_title">ಪರಿವರ್ತನೆ ವಿಫಲವಾಗಿದೆ — ಇದಾಗಬಾರ್ದಿತ್ತು</string>
+    <string name="qc_error_description">ದಯವಿಟ್ಟು ನಿಮ್ಮ ನೆಟ್ವರ್ಕ್ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ ಅಥವಾ ನಂತರ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ</string>
+    <string name="qc_error_description_no_internet">ದಯವಿಟ್ಟು ನಿಮ್ಮ ಇಂಟರ್ನೆಟ್ ಸಂಪರ್ಕವನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ.\nನೀವು ಮತ್ತೆ ಆನ್‌ಲೈನ್ ಆದಾಗ ನಾವು ಸಿದ್ಧರಾಗಿರುತ್ತೇವೆ.</string>
+
+    <!-- About Page -->
+    <string name="qc_about_feedback_discussion">ಪ್ರತಿಕ್ರಿಯೆ ಮತ್ತು ಚರ್ಚೆ</string>
+    <string name="qc_about_privacy_policy">ಗೋಪನೀಯತಾ ನೀತಿ</string>
+    <string name="qc_about_privacy_policy_button">ನಮ್ಮ Privacy Policy ನೋಡಲು ಕ್ಲಿಕ್ ಮಾಡಿ</string>
 </resources>

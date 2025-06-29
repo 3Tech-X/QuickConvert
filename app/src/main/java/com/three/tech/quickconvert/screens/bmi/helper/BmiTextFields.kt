@@ -20,9 +20,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusManager
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import com.three.tech.quickconvert.R
 import com.three.tech.quickconvert.viewmodel.BMIPageData
 import com.three.tech.quickconvert.viewmodel.BodyMassViewModel
 
@@ -33,11 +35,12 @@ fun BMITextFields(
     focusManager: FocusManager,
     inputFields: State<BMIPageData>
 ) {
+    val context = LocalContext.current
     var isHeightFieldFocused by remember { mutableStateOf(false) }
     Column {
         TextField(
             value = inputFields.value.heightValue,
-            label = { Text("Height (cm)") },
+            label = { Text(context.getString(R.string.qc_bmi_height)) },
             onValueChange = { bmiViewModel.onValueChange(it, null) },
             shape = RoundedCornerShape(12.dp),
             modifier = Modifier
@@ -66,7 +69,7 @@ fun BMITextFields(
 
         if (inputFields.value.heightValueError && !isHeightFieldFocused) {
             Text(
-                text = "Please enter a valid height",
+                text = context.getString(R.string.qc_bmi_error_height),
                 color = MaterialTheme.colorScheme.error,
                 style = MaterialTheme.typography.bodySmall,
                 modifier = Modifier.padding(start = 16.dp, top = 4.dp)
@@ -83,11 +86,12 @@ private fun WeightTextField(
     isInitialCompositionCompleted: Boolean,
     focusManager: FocusManager
 ) {
+    val context = LocalContext.current
     var isWeightFieldFocused by remember { mutableStateOf(false) }
     Column {
         TextField(
             value = inputFields.value.weightValue,
-            label = { Text("Weight (kg)") },
+            label = { Text(context.getString(R.string.qc_bmi_weight)) },
             onValueChange = {
                 bmiViewModel.onValueChange(null, it)
             },
@@ -119,7 +123,7 @@ private fun WeightTextField(
 
         if (inputFields.value.weightValueError && !isWeightFieldFocused) {
             Text(
-                text = "Please enter a valid weight",
+                text = context.getString(R.string.qc_bmi_error_weight),
                 color = MaterialTheme.colorScheme.error,
                 style = MaterialTheme.typography.bodySmall,
                 modifier = Modifier.padding(start = 16.dp, top = 4.dp)

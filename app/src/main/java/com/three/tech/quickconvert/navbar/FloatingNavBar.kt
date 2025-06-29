@@ -8,7 +8,10 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -29,17 +32,22 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.three.tech.quickconvert.navigation.BottomBarItem
-
+import com.three.tech.quickconvert.screens.helper.isGestureNavigation
 
 @Composable
 fun FloatingBottomBar(items: List<BottomBarItem>, clickedIndex: Int) {
     var selectedIndex by remember { mutableIntStateOf(clickedIndex) }
+    val bottomPadding = if (isGestureNavigation()) {
+        WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
+    } else {
+        2.dp
+    }
 
     Row(
         modifier = Modifier
             .background(Color.Transparent)
             .fillMaxWidth()
-            .padding(start = 20.dp, bottom = 2.dp, end = 20.dp),
+            .padding(start = 20.dp, bottom = bottomPadding, end = 20.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
