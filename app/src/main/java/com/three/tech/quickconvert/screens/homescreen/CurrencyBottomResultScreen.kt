@@ -20,6 +20,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -90,15 +91,16 @@ private fun ResultBottomSuccessScreen(currency: Currency) {
 
 @Composable
 private fun ResultBottomErrorScreen(networkError: NetworkError) {
+    val context = LocalContext.current
     val (text, description, image) = when (networkError) {
         NetworkError.NO_INTERNET -> Triple(
-            "No Internet Connection",
-            "Please enable your internet connection.\nWe’ll be ready when you're back online.",
+            context.getString(R.string.qc_error_title_no_internet),
+            context.getString(R.string.qc_error_description_no_internet),
             R.drawable.qc_no_internet_image
         )
         else -> Triple(
-            "Conversion Failed — this shouldn’t have happened",
-            "Please check your network connection or try again later",
+            context.getString(R.string.qc_error_title),
+            context.getString(R.string.qc_error_description),
             R.drawable.qc_server_error
         )
     }
@@ -116,7 +118,7 @@ private fun ResultBottomErrorScreen(networkError: NetworkError) {
                     modifier = Modifier.fillMaxSize(),
                     painter = painterResource(id = image),
                     contentScale = ContentScale.FillWidth,
-                    contentDescription = "Quick Convert Logo"
+                    contentDescription = "Quick Convert Error Logo"
                 )
 
                 Column(

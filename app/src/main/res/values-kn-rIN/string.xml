@@ -27,6 +27,12 @@
     <string name="qc_search_text">ಹುಡುಕಿ</string>
     <string name="qc_no_result_found">ಯಾವುದೇ ಫಲಿತಾಂಶ ದೊರಕಲಿಲ್ಲ</string>
 
+    <!-- Error Screen -->
+    <string name="qc_error_title_no_internet">ಇಂಟರ್ನೆಟ್ ಸಂಪರ್ಕ ಇಲ್ಲ</string>
+    <string name="qc_error_title">ಪರಿವರ್ತನೆ ವಿಫಲವಾಗಿದೆ — ಇದಾಗಬಾರ್ದಿತ್ತು</string>
+    <string name="qc_error_description">ದಯವಿಟ್ಟು ನಿಮ್ಮ ನೆಟ್ವರ್ಕ್ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ ಅಥವಾ ನಂತರ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ</string>
+    <string name="qc_error_description_no_internet">ದಯವಿಟ್ಟು ನಿಮ್ಮ ಇಂಟರ್ನೆಟ್ ಸಂಪರ್ಕವನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ.\nನೀವು ಮತ್ತೆ ಆನ್‌ಲೈನ್ ಆದಾಗ ನಾವು ಸಿದ್ಧರಾಗಿರುತ್ತೇವೆ.</string>
+
     <!-- About Page -->
     <string name="qc_about_feedback_discussion">ಪ್ರತಿಕ್ರಿಯೆ ಮತ್ತು ಚರ್ಚೆ</string>
     <string name="qc_about_privacy_policy">ಗೋಪನೀಯತಾ ನೀತಿ</string>

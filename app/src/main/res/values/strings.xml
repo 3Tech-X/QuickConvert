@@ -28,6 +28,12 @@
     <string name="qc_search_text">Search</string>
     <string name="qc_no_result_found">No results found</string>
 
+    <!-- Error Screen -->
+    <string name="qc_error_title_no_internet">No Internet Connection</string>
+    <string name="qc_error_description_no_internet">Please enable your internet connection. \nWe’ll be ready when you\'re back online.</string>
+    <string name="qc_error_title">Conversion Failed — this shouldn’t have happened</string>
+    <string name="qc_error_description">Please check your network connection or try again later</string>
+
     <!-- About Page -->
     <string name="qc_about_feedback_discussion">Feedback &amp; Discussion</string>
     <string name="qc_about_privacy_policy">Privacy Policy</string>

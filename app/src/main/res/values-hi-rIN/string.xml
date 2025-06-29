@@ -27,6 +27,12 @@
     <string name="qc_search_text">ढूंढें</string>
     <string name="qc_no_result_found">कोई परिणाम नहीं मिला</string>
 
+    <!-- Error Screen -->
+    <string name="qc_error_title_no_internet">कोई इंटरनेट कनेक्शन नहीं है</string>
+    <string name="qc_error_title">रूपांतरण विफल — ऐसा नहीं होना चाहिए था</string>
+    <string name="qc_error_description">कृपया अपना नेटवर्क कनेक्शन जांचें या बाद में पुनः प्रयास करें</string>
+    <string name="qc_error_description_no_internet">कृपया अपना इंटरनेट कनेक्शन सक्षम करें।\nजब आप दोबारा ऑनलाइन होंगे, हम तैयार रहेंगे।</string>
+
     <!-- About Page -->
     <string name="qc_about_feedback_discussion">प्रतिक्रिया और चर्चा</string>
     <string name="qc_about_privacy_policy">गोपनीयता नीति</string>
