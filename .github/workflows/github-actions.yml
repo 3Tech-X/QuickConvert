@@ -66,7 +66,7 @@ jobs:
             ${{ runner.os }}-gradle-
       - name: Change wrapper permissions
         run: chmod +x ./gradlew
-      - name: Assemble Clean Release
+      - name: Clean and Assemble Release
         run:  ./gradlew clean assembleRelease
       - name: Upload APK
         uses: actions/upload-artifact@v4

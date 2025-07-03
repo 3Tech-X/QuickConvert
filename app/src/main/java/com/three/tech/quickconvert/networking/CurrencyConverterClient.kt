@@ -26,6 +26,9 @@ class CurrencyConverterClient(
         } catch (e: SerializationException) {
             return NetworkResult.Error(NetworkError.SOMETHING_WENT_WRONG)
         }
+        catch (e: Exception) {
+            return NetworkResult.Error(NetworkError.SOMETHING_WENT_WRONG)
+        }
         return when (response.status.value) {
             in 200..299 -> {
                 val currency = response.body<Currency>()
