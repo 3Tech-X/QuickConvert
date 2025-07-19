@@ -93,7 +93,7 @@ fun AboutScreen(onBackPress: () -> Unit, onNavBarClickedClicked: (NavigationType
                 )
                 Text(
                     modifier = Modifier,
-                    text = "Version: v1.0.1",
+                    text = "Version: v1.0.2",
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onBackground
                 )
