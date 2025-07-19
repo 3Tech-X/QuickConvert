@@ -210,7 +210,7 @@ fun AndroidCard(modifier: Modifier = Modifier) {
                 shape = RoundedCornerShape(12.dp),
             ) {
                 Icon(
-                    painterResource(id = R.drawable.convert_bottom_icon),
+                    painterResource(id = R.drawable.github_logo),
                     modifier = modifier
                         .padding(12.dp)
                         .size(18.dp),
