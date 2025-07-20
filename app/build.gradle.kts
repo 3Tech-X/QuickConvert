@@ -11,6 +11,9 @@ plugins {
 android {
     namespace = "com.three.tech.quickconvert"
     compileSdk = 35
+    buildFeatures {
+        buildConfig = true
+    }
 
 
     lint {
@@ -44,6 +47,10 @@ android {
                 "proguard-rules.pro"
             )
             signingConfig = signingConfigs.getByName("release")
+        }
+        debug {
+            applicationIdSuffix = ".debug"
+            versionNameSuffix = "-debug"
         }
     }
     compileOptions {
