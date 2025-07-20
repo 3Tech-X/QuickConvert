@@ -32,6 +32,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.three.tech.quickconvert.BuildConfig
 import com.three.tech.quickconvert.R
 import com.three.tech.quickconvert.navigation.NavigationType
 import com.three.tech.quickconvert.screens.helper.CardView
@@ -87,13 +88,13 @@ fun AboutScreen(onBackPress: () -> Unit, onNavBarClickedClicked: (NavigationType
             ) {
                 Text(
                     modifier = Modifier,
-                    text = "Package name: com.three.tech.quickconvert",
+                    text = "Package name: ${context.packageName}",
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onBackground
                 )
                 Text(
                     modifier = Modifier,
-                    text = "Version: v1.0.2",
+                    text = "Version: ${BuildConfig.VERSION_NAME}",
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onBackground
                 )
