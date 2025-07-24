@@ -57,7 +57,7 @@ class ConvertViewModel @Inject constructor(
     }
 
     fun validateInputField(amount: String) {
-        if (amount.isEmpty() || amount.toFloatOrNull() == null) {
+        if (amount.isEmpty() || amount.toFloatOrNull() == null || amount.toInt() < 0) {
             _uiState.value = _uiState.value.copy(currencyValueError = true)
         } else {
             _uiState.value = _uiState.value.copy(currencyValueError = false)
