@@ -26,8 +26,8 @@ android {
         applicationId = "com.three.tech.quickconvert"
         minSdk = 24
         targetSdk = 35
-        versionCode = 5
-        versionName = "1.0.4"
+        versionCode = 6
+        versionName = "1.0.5f"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
