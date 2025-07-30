@@ -12,8 +12,8 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
@@ -44,7 +44,7 @@ fun HandleAmountAndButton(
     var isAmountFieldFocused by remember { mutableStateOf(false) }
     qcHomePageData.apply {
         Column {
-            TextField(
+            OutlinedTextField(
                 value = inputFields.value.currencyValue,
                 label = { Text(context.getString(R.string.qc_amount_to_convert)) },
                 onValueChange = { currencyViewModel.onValueChange(it) },
