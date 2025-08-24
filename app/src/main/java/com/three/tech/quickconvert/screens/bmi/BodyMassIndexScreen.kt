@@ -46,6 +46,7 @@ import com.three.tech.quickconvert.navigation.NavigationType
 import com.three.tech.quickconvert.screens.bmi.helper.BMIProgressBar
 import com.three.tech.quickconvert.screens.bmi.helper.BMITextFields
 import com.three.tech.quickconvert.screens.navigationbar.CustomNavigationBar
+import com.three.tech.quickconvert.util.vibratePhone
 import com.three.tech.quickconvert.viewmodel.BodyMassViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -172,6 +173,7 @@ fun BMICalculatorScreen(onBackPress: () -> Unit, onNavBarClickedClicked: (Naviga
                         .padding(12.dp),
                     shape = RoundedCornerShape(12.dp),
                     onClick = {
+                        vibratePhone(context)
                         focusManager.clearFocus()
                         bodyMassViewModel.calculateBmi(
                             heightValue = inputFields.value.heightValue,
