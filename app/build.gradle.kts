@@ -10,7 +10,7 @@ plugins {
 
 android {
     namespace = "com.three.tech.quickconvert"
-    compileSdk = 35
+    compileSdk = 36
     buildFeatures {
         buildConfig = true
     }
@@ -25,7 +25,7 @@ android {
     defaultConfig {
         applicationId = "com.three.tech.quickconvert"
         minSdk = 26
-        targetSdk = 35
+        targetSdk = 36
         versionCode = 8
         versionName = "1.1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
