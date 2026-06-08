@@ -39,8 +39,8 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 import com.three.tech.quickconvert.R
 import com.three.tech.quickconvert.navigation.NavigationType
 import com.three.tech.quickconvert.screens.bmi.helper.BMIProgressBar
@@ -56,7 +56,7 @@ fun BMICalculatorScreen(onBackPress: () -> Unit, onNavBarClickedClicked: (Naviga
     val scrollState = rememberScrollState()
     val focusManager = LocalFocusManager.current
 
-    val bodyMassViewModel = hiltViewModel<BodyMassViewModel>()
+    val bodyMassViewModel: BodyMassViewModel = androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel()
     val inputFields = bodyMassViewModel.uiState.collectAsState()
     var isInitialCompositionCompleted by remember { mutableStateOf(false) }
 
@@ -72,7 +72,7 @@ fun BMICalculatorScreen(onBackPress: () -> Unit, onNavBarClickedClicked: (Naviga
                 modifier = Modifier.background(MaterialTheme.colorScheme.background),
                 title = {
                     Text(
-                        text = context.getString(R.string.qc_main_title_bmi),
+                        text = stringResource(R.string.qc_main_title_bmi),
                         style = MaterialTheme.typography.titleLarge
                     )
                 },
@@ -147,14 +147,14 @@ fun BMICalculatorScreen(onBackPress: () -> Unit, onNavBarClickedClicked: (Naviga
                             contentDescription = "Quick Convert Logo"
                         )
                         Text(
-                            text = context.getString(R.string.qc_title_bmi),
+                            text = stringResource(R.string.qc_title_bmi),
                             modifier = Modifier.padding(16.dp),
                             color = Color.Black,
                             style = MaterialTheme.typography.headlineMedium
                         )
 
                         Text(
-                            text = context.getString(R.string.qc_desc_bmi),
+                            text = stringResource(R.string.qc_desc_bmi),
                             modifier = Modifier.padding(16.dp),
                             color = Color.Black,
                             style = MaterialTheme.typography.bodyMedium
@@ -185,7 +185,7 @@ fun BMICalculatorScreen(onBackPress: () -> Unit, onNavBarClickedClicked: (Naviga
                     )
                 ) {
                     Text(
-                        text = context.getString(R.string.qc_button_bmi),
+                        text = stringResource(R.string.qc_button_bmi),
                         style = MaterialTheme.typography.titleMedium,
                     )
                 }
@@ -203,7 +203,7 @@ fun BMICalculatorScreen(onBackPress: () -> Unit, onNavBarClickedClicked: (Naviga
                                     .fillMaxWidth()
                                     .padding(bottom = 16.dp),
                                 style = MaterialTheme.typography.titleLarge,
-                                text = context.getString(R.string.qc_bmi_result)
+                                text = stringResource(R.string.qc_bmi_result)
                             )
 
                             Column(
@@ -231,7 +231,7 @@ fun BMICalculatorScreen(onBackPress: () -> Unit, onNavBarClickedClicked: (Naviga
                                 modifier = Modifier
                                     .padding(top = 8.dp, bottom = 8.dp),
                                 style = MaterialTheme.typography.bodyLarge,
-                                text = context.getString(R.string.qc_bmi_range)
+                                text = stringResource(R.string.qc_bmi_range)
                             )
                             BMIProgressBar(
                                 bmi = inputFields.value.bmiValue.toDoubleOrNull() ?: 0.0,
