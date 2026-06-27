@@ -30,3 +30,5 @@
     public static *** d(...);
     public static *** v(...);
 }
+
+-dontwarn com.google.errorprone.annotations.**
