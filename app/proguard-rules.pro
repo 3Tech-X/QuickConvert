@@ -32,3 +32,8 @@
 }
 
 -dontwarn com.google.errorprone.annotations.**
+
+# WorkManager / Room R8 Full Mode fix
+-keep class androidx.work.impl.** {
+    <init>(...);
+}
