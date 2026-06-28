@@ -46,6 +46,7 @@ import com.three.tech.quickconvert.R
 import com.three.tech.quickconvert.currencyconstant.getAllCurrencyCodes
 import com.three.tech.quickconvert.navigation.NavigationType
 import com.three.tech.quickconvert.networking.dataclass.NetworkError
+import com.three.tech.quickconvert.screens.alert.QCErrorPopUp
 import com.three.tech.quickconvert.screens.navigationbar.CustomNavigationBar
 import com.three.tech.quickconvert.viewmodel.ConvertViewModel
 
@@ -56,6 +57,7 @@ fun QCHomePage(onClose: () -> Unit, onNavBarClickedClicked: (NavigationType) -> 
     val scrollState = rememberScrollState()
     val context = LocalContext.current
     val currencyViewModel = hiltViewModel<ConvertViewModel>()
+    var showPopUp by remember { mutableStateOf(false) }
     var baseCurrency by remember { mutableStateOf("") }
     var targetCurrency by remember { mutableStateOf("") }
     val errorMessage by remember { mutableStateOf<NetworkError?>(null) }
@@ -67,7 +69,7 @@ fun QCHomePage(onClose: () -> Unit, onNavBarClickedClicked: (NavigationType) -> 
     val response = qCResponse(networkResult, errorMessage)
     val focusManager = LocalFocusManager.current
     BackHandler {
-        onClose()
+        showPopUp = true
     }
 
     Scaffold(
@@ -87,7 +89,7 @@ fun QCHomePage(onClose: () -> Unit, onNavBarClickedClicked: (NavigationType) -> 
                         modifier = Modifier
                             .padding(8.dp)
                             .clickable {
-                                onClose()
+                                showPopUp = true
                             }
                             .size(32.dp),
                         contentAlignment = Alignment.Center,
@@ -123,6 +125,12 @@ fun QCHomePage(onClose: () -> Unit, onNavBarClickedClicked: (NavigationType) -> 
                     onClick = { focusManager.clearFocus() }
                 )
         ) {
+            if (showPopUp) {
+                QCErrorPopUp(
+                    onDismiss = { showPopUp = false },
+                    onClose = { onClose() }
+                )
+            }
             Column(
                 modifier = Modifier
                     .verticalScroll(scrollState)
