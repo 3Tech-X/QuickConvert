@@ -29,13 +29,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.three.tech.quickconvert.navigation.BottomBarItem
 import com.three.tech.quickconvert.screens.helper.isGestureNavigation
+import com.three.tech.quickconvert.util.vibratePhone
 
 @Composable
 fun FloatingBottomBar(items: List<BottomBarItem>, clickedIndex: Int) {
+    val context = LocalContext.current
     var selectedIndex by remember { mutableIntStateOf(clickedIndex) }
     val bottomPadding = if (isGestureNavigation()) {
         WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
@@ -89,6 +92,7 @@ fun FloatingBottomBar(items: List<BottomBarItem>, clickedIndex: Int) {
                             .clickable {
                                 selectedIndex = index
                                 item.onClick()
+                                vibratePhone(context, 4)
                             }
                             .padding(12.dp),
                         verticalArrangement = Arrangement.Center,

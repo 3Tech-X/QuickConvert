@@ -38,4 +38,10 @@
     <string name="qc_about_feedback_discussion">Feedback &amp; Discussion</string>
     <string name="qc_about_privacy_policy">Privacy Policy</string>
     <string name="qc_about_privacy_policy_button">Click to View Our Privacy Policy</string>
+
+    <!-- Alert Dialogue -->>
+    <string name="qc_alert_dialog_title">Close App</string>
+    <string name="qc_alert_dialog_message">Are you sure you want to close the App?</string>
+    <string name="qc_alert_dialog_positive">Dismiss</string>
+    <string name="qc_alert_dialog_negative">Close App</string>
 </resources>

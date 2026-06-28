@@ -1,16 +1,15 @@
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.ksp)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.serialization)
     id("dagger.hilt.android.plugin")
-    id("kotlin-kapt")
 
 }
 
 android {
     namespace = "com.three.tech.quickconvert"
-    compileSdk = 35
+    compileSdk = 36
     buildFeatures {
         buildConfig = true
     }
@@ -24,10 +23,10 @@ android {
 
     defaultConfig {
         applicationId = "com.three.tech.quickconvert"
-        minSdk = 24
-        targetSdk = 35
-        versionCode = 7
-        versionName = "1.0.6"
+        minSdk = 26
+        targetSdk = 36
+        versionCode = 8
+        versionName = "1.1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -42,6 +41,7 @@ android {
     buildTypes {
         getByName("release") {
             isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -54,11 +54,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
-    kotlinOptions {
-        jvmTarget = "11"
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     buildFeatures {
         compose = true
@@ -85,10 +82,10 @@ dependencies {
     implementation(libs.hilt.navigation.compose)
     implementation(libs.androidx.navigation)
     implementation(libs.androidx.navigation.ktx)
-    kapt(libs.androidx.navigation.safe.args)
-    kapt(libs.hilt.android.compiler)
+    ksp(libs.androidx.navigation.safe.args)
+    ksp(libs.hilt.android.compiler)
     implementation(libs.androidx.work.runtime.ktx)
-    kapt(libs.androidx.hilt.compiler)
+    ksp(libs.androidx.hilt.compiler)
     implementation(libs.androidx.hilt.work)
 
     implementation(libs.androidx.ui.graphics)
