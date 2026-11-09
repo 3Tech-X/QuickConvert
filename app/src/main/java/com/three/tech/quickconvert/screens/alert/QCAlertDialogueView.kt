@@ -13,26 +13,25 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.three.tech.quickconvert.R
 
 @Composable
 fun QCErrorPopUp(onDismiss: () -> Unit, onClose: () -> Unit) {
-    val context = LocalContext.current
     AlertDialog(
         onDismissRequest = onDismiss,
         title = {
             Text(
-                text = context.getString(R.string.qc_alert_dialog_title),
-                textAlign = TextAlign.Center
+                text = stringResource(R.string.qc_alert_dialog_title),
+                textAlign = TextAlign.Center,
             )
         },
         text = {
             Text(
-                text = context.getString(R.string.qc_alert_dialog_message),
-                textAlign = TextAlign.Center
+                text = stringResource(R.string.qc_alert_dialog_message),
+                textAlign = TextAlign.Center,
             )
         },
         confirmButton = {
@@ -48,7 +47,7 @@ fun QCErrorPopUp(onDismiss: () -> Unit, onClose: () -> Unit) {
                         .padding(8.dp),
                     shape = RoundedCornerShape(22.dp)
                 ) {
-                    Text(text = context.getString(R.string.qc_alert_dialog_positive))
+                    Text(text = stringResource(R.string.qc_alert_dialog_positive))
                 }
 
                 Button(
@@ -64,9 +63,9 @@ fun QCErrorPopUp(onDismiss: () -> Unit, onClose: () -> Unit) {
                         .padding(8.dp),
                     shape = RoundedCornerShape(22.dp)
                 ) {
-                    Text(text = context.getString(R.string.qc_alert_dialog_negative))
+                    Text(text = stringResource(R.string.qc_alert_dialog_negative))
                 }
             }
-        }
+        },
     )
 }

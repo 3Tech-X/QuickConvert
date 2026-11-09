@@ -10,23 +10,22 @@ import io.ktor.util.network.UnresolvedAddressException
 import kotlinx.serialization.SerializationException
 
 class CurrencyConverterClient(
-    private val httpClient: HttpClient
+    private val httpClient: HttpClient,
 ) {
     suspend fun convertCurrency(
         baseCurrency: String,
         targetCurrency: String,
-        amount: Float
+        amount: Float,
     ): NetworkResult {
         val response = try {
             httpClient.get(
-                urlString = "https://v6.exchangerate-api.com/v6/026f9f8e2e8e2e310cd6f6d0/pair/${baseCurrency}/${targetCurrency}/${amount}"
+                urlString = "https://v6.exchangerate-api.com/v6/026f9f8e2e8e2e310cd6f6d0/pair/$baseCurrency/$targetCurrency/$amount"
             )
-        } catch (e: UnresolvedAddressException) {
+        } catch (_: UnresolvedAddressException) {
             return NetworkResult.Error(NetworkError.NO_INTERNET)
-        } catch (e: SerializationException) {
+        } catch (_: SerializationException) {
             return NetworkResult.Error(NetworkError.SOMETHING_WENT_WRONG)
-        }
-        catch (e: Exception) {
+        } catch (_: Exception) {
             return NetworkResult.Error(NetworkError.SOMETHING_WENT_WRONG)
         }
         return when (response.status.value) {

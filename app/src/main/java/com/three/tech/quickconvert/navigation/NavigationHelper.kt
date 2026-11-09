@@ -4,7 +4,7 @@ import androidx.navigation.NavController
 
 fun bottomBarClickHandler(
     navigationType: NavigationType,
-    navController: NavController
+    navController: NavController,
 ) {
     when (navigationType) {
         NavigationType.ABOUT -> navController.navigate(QCComponentRoute.About.route)

@@ -39,10 +39,10 @@ fun SearchableDropdown(
     label: String,
     isError: Boolean,
     onCurrencyValidate: () -> Unit,
-    onItemSelected: (String) -> Unit
+    onItemSelected: (String) -> Unit,
 ) {
     var selectedText by remember { mutableStateOf("") }
-    var showDialog by remember { mutableStateOf(false) }
+    var showDialog by remember { mutableStateOf(value = false) }
     var searchQuery by remember { mutableStateOf("") }
     val interactionSource = remember { MutableInteractionSource() }
     val context = LocalContext.current

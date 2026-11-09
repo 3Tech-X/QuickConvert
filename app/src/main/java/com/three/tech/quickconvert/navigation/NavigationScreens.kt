@@ -13,9 +13,11 @@ internal fun NavGraphBuilder.navigationScreens(
     context: Activity,
 ) {
     composable(route = QCComponentRoute.Home.route) {
-        QCHomePage(onClose = {
-            context.finish()
-        }) {
+        QCHomePage(
+            onClose = {
+                context.finish()
+            },
+        ) {
             bottomBarClickHandler(it, navController)
         }
     }

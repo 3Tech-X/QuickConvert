@@ -32,6 +32,7 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.three.tech.quickconvert.BuildConfig
@@ -57,8 +58,8 @@ fun AboutScreen(onBackPress: () -> Unit, onNavBarClickedClicked: (NavigationType
                 modifier = Modifier.background(MaterialTheme.colorScheme.background),
                 title = {
                     Text(
-                        text = context.getString(R.string.qc_title),
-                        style = MaterialTheme.typography.titleLarge
+                        text = stringResource(R.string.qc_title),
+                        style = MaterialTheme.typography.titleLarge,
                     )
                 },
                 navigationIcon = {
@@ -136,7 +137,7 @@ fun FeedbackCard(modifier: Modifier = Modifier) {
     val context = LocalContext.current
     CardView {
         Text(
-            text = context.getString(R.string.qc_about_feedback_discussion),
+            text = stringResource(R.string.qc_about_feedback_discussion),
             modifier = modifier.padding(10.dp),
             style = MaterialTheme.typography.titleMedium,
         )
@@ -164,14 +165,14 @@ fun PrivacyPolicyCard(modifier: Modifier = Modifier) {
     val context = LocalContext.current
     CardView {
         Text(
-            text = context.getString(R.string.qc_about_privacy_policy),
+            text = stringResource(R.string.qc_about_privacy_policy),
             modifier = modifier.padding(10.dp),
             style = MaterialTheme.typography.titleMedium,
         )
         Button(
             onClick = {
                 "https://sites.google.com/view/quickconvertprivacypolicy/home".openAsCustomTab(
-                    context
+                    context,
                 )
             },
             modifier = modifier
@@ -186,7 +187,7 @@ fun PrivacyPolicyCard(modifier: Modifier = Modifier) {
                     .size(18.dp),
                 contentDescription = "Privacy Policy",
             )
-            Text(text = context.getString(R.string.qc_about_privacy_policy_button))
+            Text(text = stringResource(R.string.qc_about_privacy_policy_button))
         }
     }
 }

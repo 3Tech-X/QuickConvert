@@ -33,10 +33,10 @@ fun BMITextFields(
     isInitialCompositionCompleted: Boolean,
     bmiViewModel: BodyMassViewModel,
     focusManager: FocusManager,
-    inputFields: State<BMIPageData>
+    inputFields: State<BMIPageData>,
 ) {
     val context = LocalContext.current
-    var isHeightFieldFocused by remember { mutableStateOf(false) }
+    var isHeightFieldFocused by remember { mutableStateOf(value = false) }
     Column {
         TextField(
             value = inputFields.value.heightValue,
@@ -84,10 +84,10 @@ private fun WeightTextField(
     inputFields: State<BMIPageData>,
     bmiViewModel: BodyMassViewModel,
     isInitialCompositionCompleted: Boolean,
-    focusManager: FocusManager
+    focusManager: FocusManager,
 ) {
     val context = LocalContext.current
-    var isWeightFieldFocused by remember { mutableStateOf(false) }
+    var isWeightFieldFocused by remember { mutableStateOf(value = false) }
     Column {
         TextField(
             value = inputFields.value.weightValue,

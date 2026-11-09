@@ -162,6 +162,6 @@ fun getAllCurrencyCodes(): List<String> {
         "YER",
         "ZAR",
         "ZMW",
-        "ZWL"
+        "ZWL",
     )
 }
