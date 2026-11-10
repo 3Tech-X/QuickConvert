@@ -28,7 +28,7 @@ fun QCNavigation(context: Activity) {
 
 fun NavGraphBuilder.qcNavigation(
     navController: NavController,
-    context: Activity
+    context: Activity,
 ) {
     navigation(startDestination = QCComponentRoute.Home.route, route = HOME_SCREEN) {
         navigationScreens(navController, context)

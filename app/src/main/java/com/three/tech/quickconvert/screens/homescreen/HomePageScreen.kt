@@ -37,11 +37,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.three.tech.quickconvert.R
 import com.three.tech.quickconvert.currencyconstant.getAllCurrencyCodes
 import com.three.tech.quickconvert.navigation.NavigationType
@@ -55,8 +55,7 @@ import com.three.tech.quickconvert.viewmodel.ConvertViewModel
 @Composable
 fun QCHomePage(onClose: () -> Unit, onNavBarClickedClicked: (NavigationType) -> Unit) {
     val scrollState = rememberScrollState()
-    val context = LocalContext.current
-    val currencyViewModel = hiltViewModel<ConvertViewModel>()
+    val currencyViewModel: ConvertViewModel = hiltViewModel()
     var showPopUp by remember { mutableStateOf(false) }
     var baseCurrency by remember { mutableStateOf("") }
     var targetCurrency by remember { mutableStateOf("") }
@@ -80,7 +79,7 @@ fun QCHomePage(onClose: () -> Unit, onNavBarClickedClicked: (NavigationType) -> 
                 modifier = Modifier.background(MaterialTheme.colorScheme.background),
                 title = {
                     Text(
-                        text = context.getString(R.string.qc_title),
+                        text = stringResource(R.string.qc_title),
                         style = MaterialTheme.typography.titleLarge
                     )
                 },
@@ -96,7 +95,7 @@ fun QCHomePage(onClose: () -> Unit, onNavBarClickedClicked: (NavigationType) -> 
                     ) {
                         Image(
                             painter = rememberVectorPainter(image = Icons.Outlined.Cancel),
-                            contentDescription = context.getString(R.string.qc_back_button),
+                            contentDescription = stringResource(R.string.qc_back_button),
                             modifier = Modifier
                                 .fillMaxSize()
                                 .size(32.dp),
@@ -159,17 +158,17 @@ fun QCHomePage(onClose: () -> Unit, onNavBarClickedClicked: (NavigationType) -> 
                                 .fillMaxWidth(),
                             painter = painterResource(id = R.drawable.qc_home_image),
                             contentScale = ContentScale.FillWidth,
-                            contentDescription = context.getString(R.string.qc_home_image)
+                            contentDescription = stringResource(R.string.qc_home_image)
                         )
                         Text(
-                            text = context.getString(R.string.qc_home_title),
+                            text = stringResource(R.string.qc_home_title),
                             modifier = Modifier.padding(16.dp),
                             color = Color.Black,
                             style = MaterialTheme.typography.headlineMedium
                         )
 
                         Text(
-                            text = context.getString(R.string.qc_home_description),
+                            text = stringResource(R.string.qc_home_description),
                             modifier = Modifier.padding(16.dp),
                             color = Color.Black,
                             style = MaterialTheme.typography.bodyMedium
@@ -179,7 +178,7 @@ fun QCHomePage(onClose: () -> Unit, onNavBarClickedClicked: (NavigationType) -> 
                 }
                 SearchableDropdown(
                     items = getAllCurrencyCodes(),
-                    label = context.getString(R.string.qc_base_currency),
+                    label = stringResource(R.string.qc_base_currency),
                     onItemSelected = { selectedItem ->
                         baseCurrency = selectedItem
                     },
@@ -194,7 +193,7 @@ fun QCHomePage(onClose: () -> Unit, onNavBarClickedClicked: (NavigationType) -> 
 
                 SearchableDropdown(
                     items = getAllCurrencyCodes(),
-                    label = context.getString(R.string.qc_convert_to_currency),
+                    label = stringResource(R.string.qc_convert_to_currency),
                     onItemSelected = { selectedItem ->
                         targetCurrency = selectedItem
                     },

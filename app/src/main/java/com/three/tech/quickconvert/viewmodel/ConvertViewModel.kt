@@ -14,7 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ConvertViewModel @Inject constructor(
-    private val service: ConverterService
+    private val service: ConverterService,
 ) : ViewModel() {
 
     private var _networkResult = MutableStateFlow<NetworkResult?>(null)
@@ -25,7 +25,7 @@ class ConvertViewModel @Inject constructor(
     val uiState: StateFlow<QCHomePageData>
         get() = _uiState.asStateFlow()
 
-    private var _isLoading = MutableStateFlow(false)
+    private var _isLoading = MutableStateFlow(value = false)
     val isLoading: StateFlow<Boolean>
         get() = _isLoading.asStateFlow()
 
@@ -57,7 +57,7 @@ class ConvertViewModel @Inject constructor(
     }
 
     fun validateInputField(amount: String) {
-        if (amount.isEmpty() || amount.toFloatOrNull() == null || amount.toFloat() < 0) {
+        if (amount.isEmpty() || amount.toFloatOrNull() == null || (amount.toFloatOrNull() != null && amount.toFloat() < 0)) {
             _uiState.value = _uiState.value.copy(currencyValueError = true)
         } else {
             _uiState.value = _uiState.value.copy(currencyValueError = false)

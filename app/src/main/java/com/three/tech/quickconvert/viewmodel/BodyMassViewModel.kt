@@ -27,7 +27,7 @@ class BodyMassViewModel @Inject constructor() : ViewModel() {
     }
 
     fun validateHeightValue(heightValue: String) {
-        if (heightValue.isBlank() || heightValue.toFloatOrNull() == null) {
+        if (heightValue.isBlank() || (heightValue.toFloatOrNull() == null)) {
             _uiState.value = _uiState.value.copy(heightValueError = true)
         } else {
             _uiState.value = _uiState.value.copy(heightValueError = false)
@@ -36,7 +36,7 @@ class BodyMassViewModel @Inject constructor() : ViewModel() {
 
 
     fun validateWeightValue(weightValue: String) {
-        if (weightValue.isBlank() || weightValue.toFloatOrNull() == null) {
+        if (weightValue.isBlank() || (weightValue.toFloatOrNull() == null)) {
             _uiState.value = _uiState.value.copy(weightValueError = true)
         } else {
             _uiState.value = _uiState.value.copy(weightValueError = false)

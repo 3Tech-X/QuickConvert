@@ -38,9 +38,9 @@ import kotlin.time.Duration.Companion.milliseconds
 @Composable
 fun AnimatedSplashScreen(
     onAnimationComplete: () -> Unit,
-    backgroundColor: Color = MaterialTheme.colorScheme.background
+    backgroundColor: Color = MaterialTheme.colorScheme.background,
 ) {
-    val animationState = rememberSplashAnimationState()
+    val (rotation, scale, alpha, pulseScale, pulseAlpha) = rememberSplashAnimationState()
     val colors = rememberSplashColors()
     
     SplashAnimationTiming(onAnimationComplete)
@@ -52,10 +52,10 @@ fun AnimatedSplashScreen(
         contentAlignment = Alignment.Center
     ) {
         TechGridBackground(colors.primaryColor)
-        HexagonalRings(animationState.rotation, colors)
-        PulseEffect(animationState.pulseScale, animationState.pulseAlpha, colors.primaryColor)
-        CurrencyIcon(animationState.scale, animationState.alpha, colors.primaryColor)
-        AppBranding(animationState.alpha, colors.onBackgroundColor)
+        HexagonalRings(rotation, colors)
+        PulseEffect(pulseScale, pulseAlpha, colors.primaryColor)
+        CurrencyIcon(scale, alpha, colors.primaryColor)
+        AppBranding(alpha, colors.onBackgroundColor)
     }
 }
 
@@ -206,7 +206,7 @@ private fun androidx.compose.ui.graphics.drawscope.DrawScope.drawHexagonPath(
     strokeWidth: Float
 ) {
     val path = Path()
-    val radius = size.minDimension / 2 - 10f
+    val radius = (size.minDimension / 2) - 10f
     val centerX = size.width / 2
     val centerY = size.height / 2
     

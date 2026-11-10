@@ -12,7 +12,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.three.tech.quickconvert.R
 import com.three.tech.quickconvert.networking.dataclass.Currency
@@ -44,17 +44,16 @@ fun qCResponse(
 
 @Composable
 fun HandleLoaderOnClick(isLoading: Boolean) {
-    val context = LocalContext.current
     if (isLoading) {
         CircularProgressIndicator(
             modifier = Modifier
                 .size(15.dp),
             strokeWidth = 1.dp,
-            color = Color.Red
+            color = Color.Red,
         )
     } else {
         Text(
-            text = context.getString(R.string.qc_bottom_convert),
+            text = stringResource(R.string.qc_bottom_convert),
             style = MaterialTheme.typography.titleMedium,
         )
     }

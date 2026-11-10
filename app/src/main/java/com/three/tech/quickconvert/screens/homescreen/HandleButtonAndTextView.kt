@@ -26,6 +26,7 @@ import androidx.compose.ui.focus.FocusManager
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
@@ -46,7 +47,7 @@ fun HandleAmountAndButton(
         Column {
             OutlinedTextField(
                 value = inputFields.value.currencyValue,
-                label = { Text(context.getString(R.string.qc_amount_to_convert)) },
+                label = { Text(stringResource(R.string.qc_amount_to_convert)) },
                 onValueChange = { currencyViewModel.onValueChange(it) },
                 shape = RoundedCornerShape(12.dp),
                 modifier = Modifier
@@ -74,7 +75,7 @@ fun HandleAmountAndButton(
 
             if (inputFields.value.currencyValueError && !isAmountFieldFocused) {
                 Text(
-                    text = context.getString(R.string.qc_amount_error),
+                    text = stringResource(R.string.qc_amount_error),
                     color = MaterialTheme.colorScheme.error,
                     style = MaterialTheme.typography.bodySmall,
                     modifier = Modifier.padding(start = 16.dp, top = 4.dp)

@@ -30,7 +30,7 @@ fun BMIProgressBar(bmi: Double, modifier: Modifier = Modifier) {
             .fillMaxWidth()
             .height(10.dp)
             .clip(RoundedCornerShape(12.dp))
-            .background(Color.LightGray)
+            .background(Color.LightGray),
     ) {
         Box(
             modifier = Modifier
